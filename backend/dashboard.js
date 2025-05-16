@@ -1,6 +1,7 @@
 // Load gallery images
 // const backendBaseUrl = "https://henna-art.onrender.com";
-const backendBaseUrl = "http://localhost:3000";
+// const backendBaseUrl = "http://localhost:3000";
+const backendBaseUrl = "https://henna-art-nhus.onrender.com";
 
 function loadDashboardGallery() {
     const galleryGrid = document.getElementById("gallery-grid");
