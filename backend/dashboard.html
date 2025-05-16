@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HennArtistry Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <h1>HennArtistry Dashboard</h1>
+    <a href="http://127.0.0.1:5500/frontend/index.html"class="button">retun to website</a>
+
+    <div class="card">
+      <h2>Gallery Management</h2>
+      <form id="upload-form" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="image-upload">Select Image (JPEG, JPG, PNG, GIF only)</label>
+          <input type="file" id="image-upload" name="image" accept="image/jpeg,image/jpg,image/png,image/gif" required>
+        </div>
+        <button type="submit">Upload Image</button>
+        <div id="upload-message" class="message"></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Gallery Images</h2>
+      <p>Click on an image to preview, click the delete button to remove it from the gallery.</p>
+      <div id="gallery-grid" class="gallery-grid">Loading gallery images...</div>
+    </div>
+  </div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

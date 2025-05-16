@@ -1,0 +1,119 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+nav a {
+  transition: color 0.3s ease;
+}
+
+button, a.bg-pink-600 {
+  transition: background-color 0.3s ease;
+}
+
+.gallery-img:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox {
+  transition: opacity 0.3s ease;
+}
+
+/* About the Artist Section */
+.about-artist img {
+  transition: transform 0.3s ease;
+}
+
+.about-artist img:hover {
+  transform: scale(1.05);
+}
+
+/* Our Mantra Section */
+.mantra-section {
+  background: linear-gradient(to bottom, #fce7f3, #fff1f8);
+}
+
+/* Testimonials Section */
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card .fa-star {
+  font-size: 1.2rem;
+}
+
+/* Hero Section */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .bg-white {
+  backdrop-filter: blur(5px);
+}
+
+/* Navbar Logo */
+.nav-logo {
+  height: 50px;
+  object-fit: contain;
+}
+
+.nav-logo:hover {
+  opacity: 0.9;
+}
+
+/* Navbar Links and Book Now Button */
+nav ul li a:not(.book-now-btn) {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Book Now Button */
+.book-now-btn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.book-now-btn:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .nav-logo {
+    height: 30px;
+  }
+
+  nav ul li a:not(.book-now-btn) {
+    font-size: 0.8rem;
+  }
+
+  .book-now-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
