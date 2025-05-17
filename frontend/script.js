@@ -125,11 +125,11 @@ if (contactForm) {
 function submitContactForm(event) {
   event.preventDefault();
   console.log("Submitting contact form");
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
   console.log("Contact form data:", { name, email, message });
-  
+
   const formMessage = document.getElementById("form-message");
   if (!formMessage) {
     console.error("Form message element not found");
@@ -143,7 +143,7 @@ function submitContactForm(event) {
     return;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
     formMessage.classList.remove("hidden", "text-green-600", "text-blue-600");
     formMessage.classList.add("text-red-600");
@@ -162,14 +162,19 @@ function submitContactForm(event) {
     },
     body: JSON.stringify({ name, email, message }),
   })
-    .then((response) => {
-      console.log("Contact form response status:", response.status); // Fixed line
-      if (!response.ok) {
-        return response.text().then((text) => {
-          throw new Error(`Server error: ${response.status} - ${text}`);
-        });
+    .then(async (response) => {
+      console.log("Contact form response status:", response.status);
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (e) {
+        responseData = { success: false, message: "Invalid server response" };
       }
-      return response.json();
+
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${responseData.message || "Server error"}`);
+      }
+      return responseData;
     })
     .then((data) => {
       console.log("Contact form response data:", data);
@@ -180,17 +185,16 @@ function submitContactForm(event) {
         document.getElementById("contact-form").reset();
       } else {
         formMessage.classList.add("text-red-600");
-        formMessage.textContent = "Failed to send message: " + (data.message || "Please try again later.");
+        formMessage.textContent = data.message || "Failed to send message. Please try again.";
       }
     })
     .catch((error) => {
       console.error("Contact form error:", error);
       formMessage.classList.remove("hidden", "text-green-600", "text-blue-600");
       formMessage.classList.add("text-red-600");
-      formMessage.textContent = "An error occurred: " + error.message;
+      formMessage.textContent = `Error: ${error.message}. Please try again later.`;
     });
 }
-
 
 // Booking Form Submission
 const bookingForm = document.getElementById("booking-form");
@@ -201,13 +205,13 @@ if (bookingForm) {
 function submitBookingForm(event) {
   event.preventDefault();
   console.log("Submitting booking form");
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
   const date = document.getElementById("date").value;
-  const service = document.getElementById("service").value;
-  const notes = document.getElementById("notes").value;
+  const service = document.getElementById("service").value.trim();
+  const notes = document.getElementById("notes").value.trim();
   console.log("Booking form data:", { name, email, date, service, notes });
-  
+
   let bookingMessageElement = document.getElementById("booking-message");
   if (!bookingMessageElement) {
     bookingMessageElement = document.createElement("div");
@@ -223,7 +227,7 @@ function submitBookingForm(event) {
     return;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailRegex.test(email)) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
@@ -234,10 +238,10 @@ function submitBookingForm(event) {
   const selectedDate = new Date(date);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  if (selectedDate < today) {
+  if (isNaN(selectedDate) || selectedDate < today) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-    bookingMessageElement.textContent = "Please select a future date for your booking.";
+    bookingMessageElement.textContent = "Please select a valid future date for your booking.";
     return;
   }
 
@@ -252,14 +256,19 @@ function submitBookingForm(event) {
     },
     body: JSON.stringify({ name, email, date, service, notes }),
   })
-    .then((response) => {
+    .then(async (response) => {
       console.log("Booking form response status:", response.status);
-      if (!response.ok) {
-        return response.text().then((text) => {
-          throw new Error(`Server error: ${response.status} - ${text}`);
-        });
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (e) {
+        responseData = { success: false, message: "Invalid server response" };
       }
-      return response.json();
+
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${responseData.message || "Server error"}`);
+      }
+      return responseData;
     })
     .then((data) => {
       console.log("Booking form response data:", data);
@@ -270,13 +279,13 @@ function submitBookingForm(event) {
         document.getElementById("booking-form").reset();
       } else {
         bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-        bookingMessageElement.textContent = "Error: " + (data.message || "Failed to submit booking. Please try again.");
+        bookingMessageElement.textContent = data.message || "Failed to submit booking. Please try again.";
       }
     })
     .catch((error) => {
       console.error("Booking form error:", error);
       bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
       bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-      bookingMessageElement.textContent = "There was an error submitting your booking: " + error.message;
+      bookingMessageElement.textContent = `Error: ${error.message}. Please try again later.`;
     });
 }

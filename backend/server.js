@@ -50,35 +50,86 @@ if (!fs.existsSync(galleryFile)) {
 
 // Set up nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // Use TLS
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
 });
 
+// Verify transporter on server start
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("Nodemailer transporter error:", error);
+  } else {
+    console.log("Nodemailer transporter is ready to send emails");
+  }
+});
+
+// Send test email on startup (non-production only)
+if (process.env.NODE_ENV !== "production" && process.env.EMAIL_USER && process.env.BUSINESS_EMAIL) {
+  const testMailOptions = {
+    from: `"Henna Art" <${process.env.EMAIL_USER}>`,
+    to: process.env.BUSINESS_EMAIL,
+    subject: "Test Email from Henna Art Server",
+    text: "This is a test email sent on server startup to verify Nodemailer configuration.",
+  };
+  transporter.sendMail(testMailOptions, (error, info) => {
+    if (error) {
+      console.error("Test email failed:", error);
+    } else {
+      console.log("Test email sent successfully, message ID:", info.messageId);
+    }
+  });
+}
+
 // Contact form endpoint
 app.post("/send-message", async (req, res) => {
-  console.log("Message endpoint called", req.body);
+  console.log("Message endpoint called with body:", req.body);
   try {
     const { name: contactName, email, message } = req.body;
-    
+
+    // Validate inputs
     if (!contactName || !email || !message) {
-      console.log("Missing required fields");
-      return res.status(400).json({ 
-        success: false, 
-        message: "Name, email, and message are required" 
+      console.log("Missing required fields:", { contactName, email, message });
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, and message are required",
       });
     }
-    
+
+    // Validate email format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      console.log("Invalid email format:", email);
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address",
+      });
+    }
+
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.BUSINESS_EMAIL) {
+      console.error("Missing email configuration:", {
+        EMAIL_USER: !!process.env.EMAIL_USER,
+        BUSINESS_EMAIL: !!process.env.BUSINESS_EMAIL,
+      });
+      return res.status(500).json({
+        success: false,
+        message: "Server email configuration error",
+      });
+    }
+
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Henna Art" <${process.env.EMAIL_USER}>`,
       to: process.env.BUSINESS_EMAIL,
+      replyTo: email,
       subject: `New Contact Message from ${contactName}`,
       text: `
         Name: ${contactName}
         Email: ${email}
-        
         Message:
         ${message}
       `,
@@ -87,45 +138,84 @@ app.post("/send-message", async (req, res) => {
         <p><strong>Name:</strong> ${contactName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `
+        <p>${message.replace(/\n/g, "<br>")}</p>
+      `,
     };
-    
-    console.log("Sending email with options:", mailOptions);
-    await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully");
-    
+
+    console.log("Sending email with options:", {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      subject: mailOptions.subject,
+    });
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully, message ID:", info.messageId);
+
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    console.error("Error sending message:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Failed to send message: " + error.message 
+    console.error("Error sending message:", error, { stack: error.stack });
+    res.status(500).json({
+      success: false,
+      message: `Failed to send message: ${error.message}`,
     });
   }
 });
 
 // Booking submission endpoint
 app.post("/submit-booking", async (req, res) => {
-  console.log("Booking endpoint called", req.body);
+  console.log("Booking endpoint called with body:", req.body);
   try {
     const { name: bookingName, email, date, service, notes } = req.body;
-    
+
+    // Validate inputs
     if (!bookingName || !email || !date || !service) {
-      console.log("Missing required fields");
-      return res.status(400).json({ 
-        success: false, 
-        message: "Name, email, date, and service are required" 
+      console.log("Missing required fields:", { bookingName, email, date, service });
+      return res.status(400).json({
+        success: false,
+        message: "Name, email, date, and service are required",
       });
     }
-    
+
+    // Validate email format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      console.log("Invalid email format:", email);
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address",
+      });
+    }
+
+    // Validate date
+    const selectedDate = new Date(date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (isNaN(selectedDate) || selectedDate < today) {
+      console.log("Invalid or past date:", date);
+      return res.status(400).json({
+        success: false,
+        message: "Please select a valid future date",
+      });
+    }
+
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.BUSINESS_EMAIL) {
+      console.error("Missing email configuration:", {
+        EMAIL_USER: !!process.env.EMAIL_USER,
+        BUSINESS_EMAIL: !!process.env.BUSINESS_EMAIL,
+      });
+      return res.status(500).json({
+        success: false,
+        message: "Server email configuration error",
+      });
+    }
+
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Henna Art" <${process.env.EMAIL_USER}>`,
       to: process.env.BUSINESS_EMAIL,
+      replyTo: email,
       subject: `New Booking Request from ${bookingName}`,
       text: `
         Booking Details:
-        
         Name: ${bookingName}
         Email: ${email}
         Date: ${date}
@@ -139,19 +229,23 @@ app.post("/submit-booking", async (req, res) => {
         <p><strong>Date:</strong> ${date}</p>
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Additional Notes:</strong> ${notes || "None provided"}</p>
-      `
+      `,
     };
-    
-    console.log("Sending booking email with options:", mailOptions);
-    await transporter.sendMail(mailOptions);
-    console.log("Booking email sent successfully");
-    
+
+    console.log("Sending booking email with options:", {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      subject: mailOptions.subject,
+    });
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Booking email sent successfully, message ID:", info.messageId);
+
     res.json({ success: true, message: "Booking submitted successfully!" });
   } catch (error) {
-    console.error("Error submitting booking:", error);
-    res.status(500).json({ 
-      success: false, 
-      message: "Failed to submit booking: " + error.message 
+    console.error("Error submitting booking:", error, { stack: error.stack });
+    res.status(500).json({
+      success: false,
+      message: `Failed to submit booking: ${error.message}`,
     });
   }
 });
