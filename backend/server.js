@@ -48,6 +48,112 @@ if (!fs.existsSync(galleryFile)) {
   fs.writeFileSync(galleryFile, JSON.stringify({ images: [] }));
 }
 
+// Set up nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: process.env.EMAIL_SERVICE || "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
+
+// Contact form endpoint
+app.post("/send-message", async (req, res) => {
+  console.log("Message endpoint called", req.body);
+  try {
+    const { name, email, message } = req.body;
+    
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Name, email and message are required" 
+      });
+    }
+    
+    // Email options - Fixed the template literal syntax
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+      subject: `New Contact Message from ${name}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        
+        Message:
+        ${message}
+      `,
+      html: `
+        <h3>New Contact Message</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `
+    };
+    
+    // Send email
+    await transporter.sendMail(mailOptions);
+    
+    res.json({ success: true, message: "Message sent successfully!" });
+  } catch (error) {
+    console.error("Error sending message:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Failed to send message: " + error.message 
+    });
+  }
+});
+
+// Booking submission endpoint
+app.post("/submit-booking", async (req, res) => {
+  console.log("Booking endpoint called", req.body);
+  try {
+    const { name, email, date, service, notes } = req.body;
+    
+    if (!name || !email || !date || !service) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Name, email, date and service are required" 
+      });
+    }
+    
+    // Email options for booking - Fixed the template literal syntax
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.BOOKING_EMAIL || process.env.EMAIL_USER,
+      subject: `New Booking Request from ${name}`,
+      text: `
+        Booking Details:
+        
+        Name: ${name}
+        Email: ${email}
+        Date: ${date}
+        Service: ${service}
+        Notes: ${notes || "None provided"}
+      `,
+      html: `
+        <h3>New Booking Request</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Additional Notes:</strong> ${notes || "None provided"}</p>
+      `
+    };
+    
+    // Send email
+    await transporter.sendMail(mailOptions);
+    
+    res.json({ success: true, message: "Booking submitted successfully!" });
+  } catch (error) {
+    console.error("Error submitting booking:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Failed to submit booking: " + error.message 
+    });
+  }
+});
+
 app.post("/upload-image", (req, res) => {
   console.log("Upload endpoint called"); // Debug
   upload(req, res, (err) => {
