@@ -35,7 +35,7 @@ if (uploadForm) {
       return;
     }
 
-    fetch("http://localhost:3000/upload-image", {
+    fetch("https://henna-art-nhus.onrender.com/upload-image", {
       method: "POST",
       body: formData,
     })
@@ -79,7 +79,7 @@ function loadGallery() {
     return;
   }
 
-  fetch("http://localhost:3000/get-gallery")
+  fetch("https://henna-art-nhus.onrender.com/get-gallery")
     .then((response) => response.json())
     .then((data) => {
       galleryGrid.innerHTML = "";
@@ -87,7 +87,7 @@ function loadGallery() {
         data.images.forEach((image) => {
           console.log(image);
           const imgElement = document.createElement("img");
-          imgElement.src = `http://localhost:3000/uploads/${image}`;
+          imgElement.src = `https://henna-art-nhus.onrender.com/uploads/${image}`;
           imgElement.alt = "User Uploaded Image";
           imgElement.classList.add(
             "w-full",
@@ -136,7 +136,7 @@ function submitContactForm(event) {
   }
 
   if (name && email && message) {
-    fetch("http://localhost:3000/send-message", {
+    fetch("https://henna-art-nhus.onrender.com/send-message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -199,7 +199,7 @@ function submitBookingForm(event) {
   const notes = document.getElementById("notes").value;
 
   if (name && email && date && service) {
-    fetch("http://localhost:3000/submit-booking", {
+    fetch("https://henna-art-nhus.onrender.com/submit-booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
