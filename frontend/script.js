@@ -122,24 +122,15 @@ const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", submitContactForm);
 }
-
 function submitContactForm(event) {
   event.preventDefault();
-  
-  // Get form elements
+  console.log("Submitting contact form");
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
+  console.log("Contact form data:", { name, email, message });
+  
   const formMessage = document.getElementById("form-message");
-
-  // Add loading indicator
-  if (formMessage) {
-    formMessage.classList.remove("hidden", "text-red-600", "text-green-600");
-    formMessage.classList.add("text-blue-600");
-    formMessage.textContent = "Sending your message...";
-  }
-
-  // Validate form fields
   if (!formMessage) {
     console.error("Form message element not found");
     return;
@@ -152,7 +143,6 @@ function submitContactForm(event) {
     return;
   }
 
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     formMessage.classList.remove("hidden", "text-green-600", "text-blue-600");
@@ -160,6 +150,10 @@ function submitContactForm(event) {
     formMessage.textContent = "Please enter a valid email address.";
     return;
   }
+
+  formMessage.classList.remove("hidden", "text-red-600", "text-green-600");
+  formMessage.classList.add("text-blue-600");
+  formMessage.textContent = "Sending your message...";
 
   fetch("https://henna-art-nhus.onrender.com/send-message", {
     method: "POST",
@@ -169,7 +163,7 @@ function submitContactForm(event) {
     body: JSON.stringify({ name, email, message }),
   })
     .then((response) => {
-      console.log("Response Status:", response.status);
+      console.log("Contact form response status:", response.status); // Fixed line
       if (!response.ok) {
         return response.text().then((text) => {
           throw new Error(`Server error: ${response.status} - ${text}`);
@@ -178,31 +172,25 @@ function submitContactForm(event) {
       return response.json();
     })
     .then((data) => {
-      console.log("Response Data:", data);
+      console.log("Contact form response data:", data);
+      formMessage.classList.remove("hidden", "text-red-600", "text-blue-600");
       if (data.success) {
-        formMessage.classList.remove("hidden", "text-red-600", "text-blue-600");
         formMessage.classList.add("text-green-600");
-        formMessage.textContent =
-          "Message sent successfully! We will get back to you soon.";
-        const contactForm = document.getElementById("contact-form");
-        if (contactForm && contactForm.tagName.toLowerCase() === "form") {
-          contactForm.reset();
-        }
+        formMessage.textContent = "Message sent successfully! We will get back to you soon.";
+        document.getElementById("contact-form").reset();
       } else {
-        formMessage.classList.remove("hidden", "text-green-600", "text-blue-600");
         formMessage.classList.add("text-red-600");
-        formMessage.textContent =
-          "Failed to send message: " +
-          (data.message || "Please try again later.");
+        formMessage.textContent = "Failed to send message: " + (data.message || "Please try again later.");
       }
     })
     .catch((error) => {
-      console.error("Fetch Error:", error);
+      console.error("Contact form error:", error);
       formMessage.classList.remove("hidden", "text-green-600", "text-blue-600");
       formMessage.classList.add("text-red-600");
       formMessage.textContent = "An error occurred: " + error.message;
     });
 }
+
 
 // Booking Form Submission
 const bookingForm = document.getElementById("booking-form");
@@ -212,30 +200,22 @@ if (bookingForm) {
 
 function submitBookingForm(event) {
   event.preventDefault();
-  
-  // Get form elements
+  console.log("Submitting booking form");
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const date = document.getElementById("date").value;
   const service = document.getElementById("service").value;
   const notes = document.getElementById("notes").value;
-  const bookingMessage = document.getElementById("booking-message");
+  console.log("Booking form data:", { name, email, date, service, notes });
   
-  // Add booking message element if it doesn't exist
-  let bookingMessageElement = bookingMessage;
+  let bookingMessageElement = document.getElementById("booking-message");
   if (!bookingMessageElement) {
     bookingMessageElement = document.createElement("div");
     bookingMessageElement.id = "booking-message";
     bookingMessageElement.classList.add("mt-4", "p-3", "rounded");
-    bookingForm.appendChild(bookingMessageElement);
+    document.getElementById("booking-form").appendChild(bookingMessageElement);
   }
-  
-  // Add loading indicator
-  bookingMessageElement.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-green-100", "text-green-700");
-  bookingMessageElement.classList.add("bg-blue-100", "text-blue-700");
-  bookingMessageElement.textContent = "Submitting your booking...";
 
-  // Validate form fields
   if (!name || !email || !date || !service) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
@@ -243,7 +223,6 @@ function submitBookingForm(event) {
     return;
   }
 
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
@@ -252,17 +231,19 @@ function submitBookingForm(event) {
     return;
   }
 
-  // Date validation (ensure it's a future date)
   const selectedDate = new Date(date);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  
   if (selectedDate < today) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
     bookingMessageElement.textContent = "Please select a future date for your booking.";
     return;
   }
+
+  bookingMessageElement.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-green-100", "text-green-700");
+  bookingMessageElement.classList.add("bg-blue-100", "text-blue-700");
+  bookingMessageElement.textContent = "Submitting your booking...";
 
   fetch("https://henna-art-nhus.onrender.com/submit-booking", {
     method: "POST",
@@ -272,7 +253,7 @@ function submitBookingForm(event) {
     body: JSON.stringify({ name, email, date, service, notes }),
   })
     .then((response) => {
-      console.log("Response Status:", response.status);
+      console.log("Booking form response status:", response.status);
       if (!response.ok) {
         return response.text().then((text) => {
           throw new Error(`Server error: ${response.status} - ${text}`);
@@ -281,25 +262,21 @@ function submitBookingForm(event) {
       return response.json();
     })
     .then((data) => {
+      console.log("Booking form response data:", data);
+      bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-red-100", "text-red-700");
       if (data.success) {
-        bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-red-100", "text-red-700");
         bookingMessageElement.classList.add("bg-green-100", "text-green-700");
         bookingMessageElement.textContent = "Booking submitted successfully! We will confirm your appointment soon.";
-        
-        const bookingForm = document.getElementById("booking-form");
-        if (bookingForm && bookingForm.tagName.toLowerCase() === "form") {
-          bookingForm.reset();
-        }
+        document.getElementById("booking-form").reset();
       } else {
-        bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
         bookingMessageElement.classList.add("bg-red-100", "text-red-700");
         bookingMessageElement.textContent = "Error: " + (data.message || "Failed to submit booking. Please try again.");
       }
     })
     .catch((error) => {
+      console.error("Booking form error:", error);
       bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
       bookingMessageElement.classList.add("bg-red-100", "text-red-700");
       bookingMessageElement.textContent = "There was an error submitting your booking: " + error.message;
-      console.error("Booking error:", error);
     });
 }

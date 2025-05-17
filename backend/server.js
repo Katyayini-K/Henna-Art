@@ -61,22 +61,22 @@ const transporter = nodemailer.createTransport({
 app.post("/send-message", async (req, res) => {
   console.log("Message endpoint called", req.body);
   try {
-    const { name, email, message } = req.body;
+    const { name: contactName, email, message } = req.body;
     
-    if (!name || !email || !message) {
+    if (!contactName || !email || !message) {
+      console.log("Missing required fields");
       return res.status(400).json({ 
         success: false, 
-        message: "Name, email and message are required" 
+        message: "Name, email, and message are required" 
       });
     }
     
-    // Email options - Fixed the template literal syntax
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-      subject: `New Contact Message from ${name}`,
+      to: process.env.BUSINESS_EMAIL,
+      subject: `New Contact Message from ${contactName}`,
       text: `
-        Name: ${name}
+        Name: ${contactName}
         Email: ${email}
         
         Message:
@@ -84,15 +84,16 @@ app.post("/send-message", async (req, res) => {
       `,
       html: `
         <h3>New Contact Message</h3>
-        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Name:</strong> ${contactName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `
     };
     
-    // Send email
+    console.log("Sending email with options:", mailOptions);
     await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
     
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
@@ -108,24 +109,24 @@ app.post("/send-message", async (req, res) => {
 app.post("/submit-booking", async (req, res) => {
   console.log("Booking endpoint called", req.body);
   try {
-    const { name, email, date, service, notes } = req.body;
+    const { name: bookingName, email, date, service, notes } = req.body;
     
-    if (!name || !email || !date || !service) {
+    if (!bookingName || !email || !date || !service) {
+      console.log("Missing required fields");
       return res.status(400).json({ 
         success: false, 
-        message: "Name, email, date and service are required" 
+        message: "Name, email, date, and service are required" 
       });
     }
     
-    // Email options for booking - Fixed the template literal syntax
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.BOOKING_EMAIL || process.env.EMAIL_USER,
-      subject: `New Booking Request from ${name}`,
+      to: process.env.BUSINESS_EMAIL,
+      subject: `New Booking Request from ${bookingName}`,
       text: `
         Booking Details:
         
-        Name: ${name}
+        Name: ${bookingName}
         Email: ${email}
         Date: ${date}
         Service: ${service}
@@ -133,7 +134,7 @@ app.post("/submit-booking", async (req, res) => {
       `,
       html: `
         <h3>New Booking Request</h3>
-        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Name:</strong> ${bookingName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Date:</strong> ${date}</p>
         <p><strong>Service:</strong> ${service}</p>
@@ -141,8 +142,9 @@ app.post("/submit-booking", async (req, res) => {
       `
     };
     
-    // Send email
+    console.log("Sending booking email with options:", mailOptions);
     await transporter.sendMail(mailOptions);
+    console.log("Booking email sent successfully");
     
     res.json({ success: true, message: "Booking submitted successfully!" });
   } catch (error) {
@@ -154,8 +156,9 @@ app.post("/submit-booking", async (req, res) => {
   }
 });
 
+// Image upload endpoint
 app.post("/upload-image", (req, res) => {
-  console.log("Upload endpoint called"); // Debug
+  console.log("Upload endpoint called");
   upload(req, res, (err) => {
     if (err instanceof multer.MulterError) {
       console.log("Multer error:", err.message);
@@ -210,6 +213,7 @@ app.post("/upload-image", (req, res) => {
   });
 });
 
+// Get gallery endpoint
 app.get("/get-gallery", (req, res) => {
   try {
     if (!fs.existsSync(galleryFile)) {
@@ -224,9 +228,11 @@ app.get("/get-gallery", (req, res) => {
   }
 });
 
+// Serve uploaded images and static files
 app.use("/uploads", express.static(uploadDir, { maxAge: 0 }));
 app.use(express.static(__dirname));
 
+// Delete image endpoint
 app.delete("/delete-image/:filename", (req, res) => {
   const filename = req.params.filename;
   const imagePath = path.join(uploadDir, filename);
@@ -251,6 +257,7 @@ app.delete("/delete-image/:filename", (req, res) => {
   }
 });
 
+// Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
   console.log(`Upload directory: ${uploadDir}`);
