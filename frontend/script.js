@@ -87,7 +87,7 @@ function loadGallery() {
         data.images.forEach((image) => {
           console.log(image);
           const imgElement = document.createElement("img");
-          imgElement.src = `https://henna-art-nhus.onrender.com/uploads/${image}`;
+          imgElement.src = `https://henna-art-nhus.onrender.com/uploads/${image}?t=${Date.now()}`;
           imgElement.alt = "User Uploaded Image";
           imgElement.classList.add(
             "w-full",
