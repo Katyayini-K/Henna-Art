@@ -202,16 +202,106 @@ if (bookingForm) {
   bookingForm.addEventListener("submit", submitBookingForm);
 }
 
-function submitBookingForm(event) {
-  event.preventDefault();
-  console.log("Submitting booking form");
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const date = document.getElementById("date").value;
-  const service = document.getElementById("service").value.trim();
-  const notes = document.getElementById("notes").value.trim();
-  console.log("Booking form data:", { name, email, date, service, notes });
+// Submit Booking form not working code
+// function submitBookingForm(event) {
+//   event.preventDefault();
+//   console.log("Submitting booking form");
+//   const name = document.getElementById("name").value.trim();
+//   const email = document.getElementById("email").value.trim();
+//   const date = document.getElementById("date").value;
+//   const service = document.getElementById("service").value.trim();
+//   const notes = document.getElementById("notes").value.trim();
+//   console.log("Booking form data:", { name, email, date, service, notes });
 
+//   let bookingMessageElement = document.getElementById("booking-message");
+//   if (!bookingMessageElement) {
+//     bookingMessageElement = document.createElement("div");
+//     bookingMessageElement.id = "booking-message";
+//     bookingMessageElement.classList.add("mt-4", "p-3", "rounded");
+//     document.getElementById("booking-form").appendChild(bookingMessageElement);
+//   }
+
+//   if (!name || !email || !date || !service) {
+//     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
+//     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
+//     bookingMessageElement.textContent = "Please fill out all required fields.";
+//     return;
+//   }
+
+//   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//   if (!emailRegex.test(email)) {
+//     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
+//     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
+//     bookingMessageElement.textContent = "Please enter a valid email address.";
+//     return;
+//   }
+
+//   const selectedDate = new Date(date);
+//   const today = new Date();
+//   today.setHours(0, 0, 0, 0);
+//   if (isNaN(selectedDate) || selectedDate < today) {
+//     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
+//     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
+//     bookingMessageElement.textContent = "Please select a valid future date for your booking.";
+//     return;
+//   }
+
+//   bookingMessageElement.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-green-100", "text-green-700");
+//   bookingMessageElement.classList.add("bg-blue-100", "text-blue-700");
+//   bookingMessageElement.textContent = "Submitting your booking...";
+
+//   fetch("https://henna-art-nhus.onrender.com/submit-booking", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name, email, date, service, notes }),
+//   })
+//     .then(async (response) => {
+//       console.log("Booking form response status:", response.status);
+//       let responseData;
+//       try {
+//         responseData = await response.json();
+//       } catch (e) {
+//         responseData = { success: false, message: "Invalid server response" };
+//       }
+
+//       if (!response.ok) {
+//         throw new Error(`${response.status} - ${responseData.message || "Server error"}`);
+//       }
+//       return responseData;
+//     })
+//     .then((data) => {
+//       console.log("Booking form response data:", data);
+//       bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-red-100", "text-red-700");
+//       if (data.success) {
+//         bookingMessageElement.classList.add("bg-green-100", "text-green-700");
+//         bookingMessageElement.textContent = "Booking submitted successfully! We will confirm your appointment soon.";
+//         document.getElementById("booking-form").reset();
+//       } else {
+//         bookingMessageElement.classList.add("bg-red-100", "text-red-700");
+//         bookingMessageElement.textContent = data.message || "Failed to submit booking. Please try again.";
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Booking form error:", error);
+//       bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
+//       bookingMessageElement.classList.add("bg-red-100", "text-red-700");
+//       bookingMessageElement.textContent = `Error: ${error.message}. Please try again later.`;
+//     });
+// }
+
+
+// New Booking From Working Code
+function submitBookingForm() {
+  console.log("Submitting booking form");
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const date = document.getElementById("date").value;
+  const service = document.getElementById("service").value;
+  const notes = document.getElementById("notes").value;
+  console.log("Booking form data:", { name, email, date, service, notes });
+  
   let bookingMessageElement = document.getElementById("booking-message");
   if (!bookingMessageElement) {
     bookingMessageElement = document.createElement("div");
@@ -227,7 +317,7 @@ function submitBookingForm(event) {
     return;
   }
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
@@ -238,10 +328,10 @@ function submitBookingForm(event) {
   const selectedDate = new Date(date);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  if (isNaN(selectedDate) || selectedDate < today) {
+  if (selectedDate < today) {
     bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
     bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-    bookingMessageElement.textContent = "Please select a valid future date for your booking.";
+    bookingMessageElement.textContent = "Please select a future date for your booking.";
     return;
   }
 
@@ -249,26 +339,21 @@ function submitBookingForm(event) {
   bookingMessageElement.classList.add("bg-blue-100", "text-blue-700");
   bookingMessageElement.textContent = "Submitting your booking...";
 
-  fetch("https://henna-art-nhus.onrender.com/submit-booking", {
+  fetch("http://localhost:3000/submit-booking", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, email, date, service, notes }),
   })
-    .then(async (response) => {
+    .then((response) => {
       console.log("Booking form response status:", response.status);
-      let responseData;
-      try {
-        responseData = await response.json();
-      } catch (e) {
-        responseData = { success: false, message: "Invalid server response" };
-      }
-
       if (!response.ok) {
-        throw new Error(`${response.status} - ${responseData.message || "Server error"}`);
+        return response.text().then((text) => {
+          throw new Error(`Server error: ${response.status} - ${text}`);
+        });
       }
-      return responseData;
+      return response.json();
     })
     .then((data) => {
       console.log("Booking form response data:", data);
@@ -279,13 +364,13 @@ function submitBookingForm(event) {
         document.getElementById("booking-form").reset();
       } else {
         bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-        bookingMessageElement.textContent = data.message || "Failed to submit booking. Please try again.";
+        bookingMessageElement.textContent = "Error: " + (data.message || "Failed to submit booking. Please try again.");
       }
     })
     .catch((error) => {
       console.error("Booking form error:", error);
       bookingMessageElement.classList.remove("bg-blue-100", "text-blue-700", "bg-green-100", "text-green-700");
       bookingMessageElement.classList.add("bg-red-100", "text-red-700");
-      bookingMessageElement.textContent = `Error: ${error.message}. Please try again later.`;
+      bookingMessageElement.textContent = "There was an error submitting your booking: " + error.message;
     });
 }
