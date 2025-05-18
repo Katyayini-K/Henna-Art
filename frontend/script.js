@@ -339,7 +339,7 @@ function submitBookingForm() {
   bookingMessageElement.classList.add("bg-blue-100", "text-blue-700");
   bookingMessageElement.textContent = "Submitting your booking...";
 
-  fetch("http://localhost:3000/submit-booking", {
+  fetch("https://henna-art-nhus.onrender.com/submit-booking", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
