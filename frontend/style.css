@@ -1,25 +1,49 @@
+/* Import Poppins (clean & narrow) + Dancing Script (for artistic accents) */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;500;600&display=swap');
+
+/* Base styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+/* Typography utility */
+.dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Navigation */
 nav a {
   transition: color 0.3s ease;
 }
 
-button, a.bg-pink-600 {
+button,
+a.bg-red-800 {
   transition: background-color 0.3s ease;
 }
 
+/* Background image utility */
+.bg-image {
+  background-image: url('images/banner-image1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Gallery image hover effect */
 .gallery-img:hover {
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
+/* Lightbox animation */
 #lightbox {
   transition: opacity 0.3s ease;
 }
 
-/* About the Artist Section */
+/* About section image effect */
 .about-artist img {
   transition: transform 0.3s ease;
 }
@@ -30,10 +54,10 @@ button, a.bg-pink-600 {
 
 /* Our Mantra Section */
 .mantra-section {
-  background: linear-gradient(to bottom, #fce7f3, #fff1f8);
+  background: linear-gradient(to bottom, #800000, #fff1f8);
 }
 
-/* Testimonials Section */
+/* Testimonial cards */
 .testimonial-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -47,7 +71,7 @@ button, a.bg-pink-600 {
   font-size: 1.2rem;
 }
 
-/* Hero Section */
+/* Hero section styling */
 .hero-section {
   background-size: cover;
   background-position: center;
@@ -74,7 +98,7 @@ button, a.bg-pink-600 {
   backdrop-filter: blur(5px);
 }
 
-/* Navbar Logo */
+/* Logo */
 .nav-logo {
   height: 50px;
   object-fit: contain;
@@ -84,13 +108,13 @@ button, a.bg-pink-600 {
   opacity: 0.9;
 }
 
-/* Navbar Links and Book Now Button */
+/* Navigation link sizes */
 nav ul li a:not(.book-now-btn) {
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
-/* Book Now Button */
+/* Book Now button */
 .book-now-btn {
   font-size: 0.9rem;
   font-weight: 600;
@@ -103,6 +127,7 @@ nav ul li a:not(.book-now-btn) {
   transform: translateY(-2px);
 }
 
+/* Mobile responsiveness */
 @media (max-width: 640px) {
   .nav-logo {
     height: 30px;
@@ -116,4 +141,59 @@ nav ul li a:not(.book-now-btn) {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
+
+  .service-tab {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .service-section h3 {
+    font-size: 1.25rem;
+  }
+
+  .service-section p,
+  .service-section li {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* Brand color and button background */
+.booking-button,
+a.bg-red-800 {
+  background-color: #800000 !important;
+}
+
+a.bg-red-800:hover {
+  background-color: #a00000 !important;
+}
+
+.social-icon {
+  width: 40px;                /* fixed width */
+  height: 40px;               /* fixed height */
+  display: flex;              /* center icon */
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;  /* hover background */
+  color: #800000;             /* hover icon color */
+  border-radius: 8px;         /* rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;      /* remove underline */
+}
+
+.social-icon:hover {
+  background-color: #ffffff;  /* hover background */
+  color: #800000;             /* hover icon color */
+}
+
+#gallery-grid img {
+  width: 100%;
+  height: 12rem; /* Matches h-48 in Tailwind */
+  object-fit: cover;
+  border-radius: 0.5rem; /* Matches rounded in Tailwind */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Matches shadow-md */
+  cursor: pointer;
 }

@@ -1,51 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HennArtistry - Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P_H_S - Home</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Fonts: Poetsen One + Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: 'Poetsen One', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .book_now_button_home {
+      border: 2px dotted #edbc80;
+      /* Dashed for an artistic touch */
+      border-radius: 12px 0px 12px 0px;
+      /* Unique rounded corners */
+      background-color: #661717;
+      color: #edbc80;
+      padding: 10px 20px;
+      font-family: 'Dancing Script', cursive;
+      /* Optional: adds elegance */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Soft shadow for depth */
+      transition: all 0.3s ease-in-out;
+    }
+
+    .book_now_button_home:hover {
+      background-color: #edbc80;
+      color: #7f1d1d;
+      border-color: #7f1d1d;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Henna-style animated background */
+    /* .henna-background {
+      background-image: url('images/henna-bg.png');
+      background-repeat: repeat;
+      background-size: 300px;
+      animation: moveHenna 60s linear infinite;
+    } */
+
+    /* Minimal hamburger styles (in case style.css is incomplete) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #7f1d1d; /* Matches text-red-900 */
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav {
+      display: none;
+    }
+    .mobile-nav.active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    /* Optional: Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
+
+<body class="bg-gray-100 henna-background">
+
   <!-- Navigation -->
-  <nav class="bg-white shadow-md sticky top-0 z-10">
+  <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html">
-        <img src="images/logo.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+        <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
       </a>
-      <ul class="flex space-x-4 items-center">
-        <li><a href="index.html" class="text-gray-700 hover:text-pink-600">Home</a></li>
-        <li><a href="about.html" class="text-gray-700 hover:text-pink-600">About</a></li>
-        <li><a href="services.html" class="text-gray-700 hover:text-pink-600">Services</a></li>
-        <li><a href="gallery.html" class="text-gray-700 hover:text-pink-600">Gallery</a></li>
-        <li><a href="contact.html" class="text-gray-700 hover:text-pink-600">Contact</a></li>
+
+      <!-- Desktop Menu -->
+      <nav class="nav-links hidden md:block">
+        <ul class="flex space-x-4 items-center">
+          <li><a href="index.html" class="text-red-800 hover:text-red-800 font-semibold">Home</a></li>
+          <li><a href="about.html" class="text-gray-700 hover:text-red-800">About</a></li>
+          <li><a href="services.html" class="text-gray-700 hover:text-red-800">Services</a></li>
+          <li><a href="gallery.html" class="text-gray-700 hover:text-red-800">Gallery</a></li>
+          <li><a href="contact.html" class="text-gray-700 hover:text-red-800">Contact</a></li>
+          <li>
+            <a href="booking.html" class="bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+              Book Now
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Icon -->
+      <div class="hamburger md:hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav md:hidden px-4 pb-4 space-y-2">
+      <ul>
+        <li><a href="index.html" class="block text-red-800 hover:text-red-800 font-semibold">Home</a></li>
+        <li><a href="about.html" class="block text-gray-700 hover:text-red-800">About</a></li>
+        <li><a href="services.html" class="block text-gray-700 hover:text-red-800">Services</a></li>
+        <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
+        <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
         <li>
-          <a href="booking.html" class="book-now-btn text-white bg-pink-600 px-4 py-1 rounded-lg hover:bg-pink-700 shadow-md hover:shadow-lg transition-all">
-            Book Now
-          </a>
+          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book Now</a>
         </li>
       </ul>
-    </div>
+    </nav>
   </nav>
 
-  
- <!-- Hero Section -->
- <section class="bg-cover bg-center h-screen hero-section" style="background-image: url('images/hero-img1.jpeg')">
-  <div class="container mx-auto px-4 h-full flex items-center justify-center text-center">
-    <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Elegant Henna Designs for Every Occasion</h1>
-      <p class="text-lg text-gray-600 mb-6">Transform your moments with our intricate and timeless henna artistry.</p>
-      <a href="booking.html" class="bg-pink-600 text-white px-6 py-3 rounded hover:bg-pink-700">Book Your Appointment</a>
+  <!-- Hero Section -->
+  <section class="w-full bg-cover bg-center h-screen hero-section bg-image">
+    <div class="container mx-auto px-4 h-full flex items-center justify-center text-center">
+      <div class="bg-white bg-opacity-5 p-8 rounded-lg shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 dancing text-white">Priyas_Henna_Styling</h1>
+        <p class="text-sm mb-6 text-white">Celebrate every moment with Personalized Beauty and Creativity</p>
+        <a href="booking.html"
+          class="hover:border-2 text-2xl book_now_button_home dancing text-[#edbc80] px-6 py-3 rounded hover:bg-white hover:text-red-900 bg-[#edbc80] hover:text-[#ffffff] hover:border transition-all duration-300 font-semibold tracking-wide">
+          Book Your Appointment
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Services Preview -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h2>
+      <h2 class="text-3xl font-bold text-center text-red-800 mb-12">Our Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
           <img src="images/art5.jpg" alt="Bridal Henna" class="w-full h-48 object-cover rounded mb-4">
@@ -66,51 +187,70 @@
     </div>
   </section>
 
-  <!-- About the Artist Section -->
+  <!-- About Section -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">About the Artist</h2>
+      <h2 class="text-3xl font-bold text-center text-red-800 mb-12">About the Artist</h2>
       <div class="flex flex-col md:flex-row items-center">
-        <img src="images/artist.jpg" alt="Henna Artist" class="w-full md:w-1/2 h-80 object-cover rounded-lg mb-6 md:mb-0 md:mr-8">
+        <img src="images/artist.jpg" alt="Henna Artist"
+          class="w-full md:w-1/2 h-80 object-cover rounded-lg mb-6 md:mb-0 md:mr-8" />
         <div>
-          <p class="text-lg text-gray-600 mb-4">Meet our skilled henna artist with over a decade of experience in crafting intricate designs that celebrate your unique moments. Passionate about blending tradition with modern elegance, HennArtistry brings your vision to life.</p>
-          <a href="about.html" class="bg-pink-600 text-white px-6 py-3 rounded hover:bg-pink-700">Learn More</a>
+          <p class="text-xl mb-4 dancing">Hi, I'm Priya a passionate artist, certified dentist, and creative soul behind
+            Priya Henna Styling. With over a decade of experience in henna artistry, makeup styling, and fine art, I've
+            blended my love for detail and design into everything I offer.
+          </p>
+          <p class="text-xl mb-4 dancing">
+            From elegant bridal henna to joyful face painting, from traditional Indian styles to playful modern art, I
+            bring a personal touch to every creation. After moving to Switzerland, my passion found new wings reaching
+            clients from different cultures, backgrounds, and ages.
+          </p>
+          <p class="text-xl mb-4 dancing">
+            This isn't just a service - it's a way to celebrate individuality, beauty, and art. Whether you want to feel
+            confident on your big day, gift something unique, or just enjoy a creative moment, I'm here to bring your
+            vision to life.</p>
+          <a href="about.html"
+            class="text-sm bg-red-900 text-white px-6 py-2 rounded hover:text-red hover:bg-white-700">Learn
+            More</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Mantra Section -->
-  <section class="py-16 bg-pink-100">
+  <!-- Mantra Section -->
+  <section class="py-16 bg-image">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Mantra</h2>
-      <p class="text-2xl italic text-gray-700 mb-4">"Adorning your story with timeless beauty, one henna design at a time."</p>
-      <p class="text-lg text-gray-600">At HennArtistry, we believe every design tells a story. Our mission is to create art that reflects your individuality and celebrates life’s special moments.</p>
+      <h2 class="text-3xl font-bold mb-6 text-white">Our Mantra</h2>
+      <p class="text-2xl italic mb-4 dancing text-white">"Celebrating your individuality through art, beauty and
+        intricate henna designs."</p>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our Clients Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
-          <div class="text-pink-600 mb-4">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="text-red-700 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+              class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="text-gray-600 mb-4">"The bridal henna was breathtaking! The artist captured my vision perfectly."</p>
+          <p class="text-gray-600 mb-4">"The bridal henna was breathtaking! The artist captured my vision perfectly."
+          </p>
           <p class="font-semibold text-gray-800">Sarah M.</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
-          <div class="text-pink-600 mb-4">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="text-red-700 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+              class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <p class="text-gray-600 mb-4">"Such a fun experience at my party! Everyone loved the henna designs."</p>
           <p class="font-semibold text-gray-800">Aisha R.</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
-          <div class="text-pink-600 mb-4">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <div class="text-red-700 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+              class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
           <p class="text-gray-600 mb-4">"The custom design was exactly what I wanted. Highly recommend!"</p>
           <p class="font-semibold text-gray-800">Emily T.</p>
@@ -120,20 +260,40 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-white-800 text-white py-6 bg-image">
     <div class="container mx-auto px-4 text-center">
-      <p>123 Henna Lane, Art City, AC 12345</p>
-      <p class="mt-2">Phone: +41 78 317 30 17</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="text-gray-400 hover:text-white">Facebook</a>
-        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="text-gray-400 hover:text-white">Instagram</a>
-        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white">WhatsApp</a>
-        <a href="contact.html" class="text-gray-400 hover:text-white">Contact</a>
+      <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
+      <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
+      <div class="mt-4 flex justify-center space-x-6 text-xl">
+        <a href="https://www.facebook.com/share/1FJ3ptXfy4/"
+          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs"
+          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white rounded-md social-icon"
+          aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="contact.html" class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Contact">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
-      <p class="mt-4">© 2025 HennArtistry. All rights reserved.</p>
+      <p class="mt-4 text-sm">© 2025 HennArtistry. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+
   <script src="script.js"></script>
 </body>
+
 </html>

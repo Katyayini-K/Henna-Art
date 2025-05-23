@@ -1,72 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HennArtistry - Services</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>P_H_S - Services</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Fonts: Poetsen One + Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: 'Poetsen One', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .sub_heading {
+      background-color: #800000;
+      color: white;
+    }
+
+    .service-section {
+      display: none;
+    }
+
+    .service-section.active {
+      display: block;
+    }
+
+    .service-tab {
+      transition: all 0.3s ease;
+    }
+
+    .service-tab.active {
+      background-color: #800000;
+      color: white;
+    }
+
+    /* Apply to body or a specific section */
+    .henna-background {
+      position: relative;
+      /* Ensure pseudo-element is positioned relative to this */
+      background-color: #464c55;
+      /* Fallback color (e.g., matches bg-gray-100) */
+    }
+
+    /* Pseudo-element for background image */
+    .henna-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/henna-bg.jpg');
+      /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      /* Adjust opacity (0 to 1) */
+      z-index: -1;
+      /* Place behind content */
+    }
+
+    /* Ensure content is unaffected */
+    .henna-background * {
+      position: relative;
+      /* Ensure content stays above pseudo-element */
+      z-index: 1;
+    }
+
+    /* Minimal hamburger styles (in case style.css is incomplete) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #7f1d1d; /* Matches text-red-900 */
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav {
+      display: none;
+    }
+    .mobile-nav.active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    /* Optional: Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
+
+<body class="bg-gray-100">
+
   <!-- Navigation -->
-  <nav class="bg-white shadow-md sticky top-0 z-10">
+  <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-pink-600">HennArtistry</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-gray-700 hover:text-pink-600">Home</a></li>
-        <li><a href="about.html" class="text-gray-700 hover:text-pink-600">About</a></li>
-        <li><a href="services.html" class="text-gray-700 hover:text-pink-600">Services</a></li>
-        <li><a href="gallery.html" class="text-gray-700 hover:text-pink-600">Gallery</a></li>
-        <li><a href="contact.html" class="text-gray-700 hover:text-pink-600">Contact</a></li>
-        <li><a href="booking.html" class="text-white bg-pink-600 px-4 py-2 rounded hover:bg-pink-700">Book Now</a></li>
-      </ul>
+      <a href="index.html">
+        <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="nav-links hidden md:block">
+        <ul class="flex space-x-4 items-center">
+          <li><a href="index.html" class="text-gray-700 hover:text-red-800">Home</a></li>
+          <li><a href="about.html" class="text-gray-700 hover:text-red-800">About</a></li>
+          <li><a href="services.html" class="text-red-700 hover:text-red-800 font-semibold">Services</a></li>
+          <li><a href="gallery.html" class="text-gray-700 hover:text-red-800">Gallery</a></li>
+          <li><a href="contact.html" class="text-gray-700 hover:text-red-800">Contact</a></li>
+          <li>
+            <a href="booking.html" class="bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+              Book Now
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Icon -->
+      <div class="hamburger md:hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav md:hidden px-4 pb-4 space-y-2">
+      <ul>
+        <li><a href="index.html" class="block text-gray-700 hover:text-red-800">Home</a></li>
+        <li><a href="about.html" class="block text-gray-700 hover:text-red-800">About</a></li>
+        <li><a href="services.html" class="block text-red-800 hover:text-red-800 font-semibold">Services</a></li>
+        <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
+        <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
+        <li>
+          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book
+            Now</a>
+        </li>
+      </ul>
+    </nav>
   </nav>
 
   <!-- Services Section -->
   <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">Our Services</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-semibold mb-4">Bridal Henna</h2>
-          <p class="text-gray-600 mb-4">Our bridal henna services offer intricate, customized designs to make your wedding day unforgettable. Starting at $200.</p>
-          <a href="booking.html" class="text-pink-600 hover:underline">Book Now</a>
+    <div class="container mx-auto px-2">
+      <h1 class="text-4xl font-bold text-center text-red-900 mb-12 dancing">Our Services</h1>
+
+      <!-- Henna Services Container -->
+      <div class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden">
+        <h2 class="text-2xl font-bold text-white py-4 px-6 sub_heading">Henna Services</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border-b">
+          <div class="service-tab active cursor-pointer py-4 text-center border-r" data-target="bridal-henna">Bridal
+            Henna</div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="party-henna">Party Henna</div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="custom-designs">Custom Designs
+          </div>
+          <div class="service-tab cursor-pointer py-4 text-center" data-target="henna-workshops">Henna Workshops</div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-semibold mb-4">Party Henna</h2>
-          <p class="text-gray-600 mb-4">Perfect for birthdays, festivals, or gatherings. Fun and trendy designs starting at $50 per person.</p>
-          <a href="booking.html" class="text-pink-600 hover:underline">Book Now</a>
+
+        <div class="p-6">
+          <!-- Bridal Henna -->
+          <div id="bridal-henna"
+            class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/bridal_henna_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+              Bridal Henna
+            </h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">
+                  Our bridal henna services offer intricate, customized designs to make your wedding day unforgettable.
+                  Each design is carefully crafted to reflect your personal style and wedding theme.
+                </p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Full Bridal Package (Hands and Feet): Elaborate designs covering hands up to elbows and feet up to
+                    ankles</li>
+                  <li>Half Bridal Package: Detailed designs on hands up to wrists and feet</li>
+                  <li>Includes consultation and customized design planning</li>
+                  <li>Premium natural henna paste for the darkest stain</li>
+                  <li>Touch-up service before your wedding day</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Full Bridal Package: $300-$500</p>
+                <p class="mb-2 text-red-900">Half Bridal Package: $200-$350</p>
+                <p class="mb-6 text-sm text-gray-700">*Prices may vary based on design complexity and travel distance
+                </p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Party Henna -->
+          <div id="party-henna"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/party_henna_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Party
+              Henna</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Perfect for birthdays, festivals, or any special
+                  gatherings. Our party henna services bring joy and artistic flair to your celebration.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Private party bookings (minimum 5 guests)</li>
+                  <li>Quick yet beautiful designs for each guest</li>
+                  <li>Choose from our design catalog or request custom patterns</li>
+                  <li>Great for birthday parties, baby showers, and festivals</li>
+                  <li>All natural, skin-safe henna paste</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Hourly Rate: $100 per hour</p>
+                <p class="mb-2 text-red-900">Per Person: $20-$50 (depending on design size)</p>
+                <p class="mb-4 text-sm text-gray-700">*Minimum 2-hour booking for parties</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Designs -->
+          <div id="custom-designs"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/custom_designs_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Custom
+              Designs</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Personalized henna designs tailored specifically to your
+                  vision and preferences. Perfect for those seeking something unique and meaningful.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>One-on-one consultation to understand your design preferences</li>
+                  <li>Custom-created patterns incorporating elements meaningful to you</li>
+                  <li>Small hand designs to full body art available</li>
+                  <li>Perfect for photoshoots, special events, or personal expression</li>
+                  <li>Design sketches provided before application</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Small Designs: $30-$50</p>
+                <p class="mb-2 text-red-900">Medium Designs: $50-$100</p>
+                <p class="mb-2 text-red-900">Large/Complex Designs: $100-$200</p>
+                <p class="mb-4 text-sm text-gray-700">*Consultation fee: $25 (applied toward service)</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Henna Workshops -->
+          <div id="henna-workshops"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/henna_workshops_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing text-white font-bold"
+              style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Henna Workshops</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing text-white opacity-95">Learn the beautiful art of henna application with
+                  our
+                  hands-on workshops. Perfect for beginners or those looking to enhance their skills.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl  text-white dancing">
+                  <li>Beginner to advanced level workshops available</li>
+                  <li>Learn henna mixing, cone making, and application techniques</li>
+                  <li>Practice basic patterns and design principles</li>
+                  <li>Small group settings for personalized attention</li>
+                  <li>All materials provided including take-home practice kit</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Beginner Workshop (3 hours): $75 per person</p>
+                <p class="mb-2 text-red-900">Advanced Workshop (5 hours): $120 per person</p>
+                <p class="mb-2 text-red-900">Private Workshop: $200 (up to 3 people)</p>
+                <p class="mb-4 text-sm text-gray-700">*Group discounts available for 5+ participants</p>
+                <a href="contact.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Inquire Now
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-semibold mb-4">Custom Designs</h2>
-          <p class="text-gray-600 mb-4">Personalized henna for any occasion, tailored to your vision. Prices vary based on complexity.</p>
-          <a href="booking.html" class="text-pink-600 hover:underline">Book Now</a>
+      </div>
+
+      <!-- Styling and Makeup Container -->
+      <div class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden">
+        <h2 class="text-2xl font-bold text-white py-4 px-6 sub_heading">Styling and Makeup</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border-b">
+          <div class="service-tab active cursor-pointer py-4 text-center border-r" data-target="bridal-makeup">Bridal
+            Makeup</div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="party-styling">Party Styling
+          </div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="kids-teams-style">Kids and
+            Teams Style</div>
+          <div class="service-tab cursor-pointer py-4 text-center" data-target="personal-styling">Personal Styling</div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-semibold mb-4">Henna Workshops</h2>
-          <p class="text-gray-600 mb-4">Learn the art of henna with our hands-on workshops. Contact us for group rates.</p>
-          <a href="contact.html" class="text-pink-600 hover:underline">Inquire Now</a>
+
+        <div class="p-6">
+          <!-- Bridal Makeup -->
+          <div id="bridal-makeup"
+            class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/makeup-bridal-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Bridal
+              Makeup</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Complete bridal makeup services to ensure you look
+                  stunning on your special day. Our approach enhances your natural beauty while creating a look that
+                  lasts all day.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Full bridal makeup using premium products</li>
+                  <li>Pre-wedding consultation and trial session</li>
+                  <li>Behavior and contemporary styles available</li>
+                  <li>Long-lasting techniques for all-day wear</li>
+                  <li>Optional services for mother of bride and bridesmaids</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Bridal Makeup Package: $250-$350</p>
+                <p class="mb-2 text-red-900">Trial Session: $100</p>
+                <p class="mb-2 text-red-900">Bridesmaid Makeup: $120 per person</p>
+                <p class="mb-4 text-sm text-gray-700">*Package includes trial, day-of makeup, and touch-up kit</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Party Styling -->
+          <div id="party-styling"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/makeup-party-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Party
+              Styling</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Look your best for any special occasion with our party
+                  styling services. Perfect for festivals, celebrations, or whenever you want to stand out.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Professional makeup application for any occasion</li>
+                  <li>Hair styling services available</li>
+                  <li>Outfit consultation and accessory recommendations</li>
+                  <li>Group bookings available for events</li>
+                  <li>Natural to glamorous styles to match your event</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Makeup Only: $85</p>
+                <p class="mb-2 text-red-900">Hair Styling: $65</p>
+                <p class="mb-2 text-red-900">Hair & Makeup Package: $140</p>
+                <p class="mb-4 text-sm text-gray-700">*Group discounts available for 3+ people</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kids and Teams Style -->
+          <div id="kids-teams-style"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/makeup-kids-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Kids and
+              Teams Style</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Fun and age-appropriate styling services for children and
+                  groups. Perfect for dance recitals, sports teams, or school performances.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Kid-friendly, gentle makeup application</li>
+                  <li>Themed hair styling for performances</li>
+                  <li>Team coordination for uniform appearance</li>
+                  <li>Hypoallergenic products used for sensitive skin</li>
+                  <li>Quick and efficient service for large groups</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Kids Hair Styling: $35</p>
+                <li>Kids Light Makeup: $25</li>
+                <p class="mb-2 text-red-900">Team Rate: $20 per person (minimum 5 people)</p>
+                <p class="mb-4 text-sm text-gray-700">*Travel fee may apply for on-location services</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personal Styling -->
+          <div id="personal-styling"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/makeup-personal-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Personal
+              Styling</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">One-on-one styling consultation to help you discover your
+                  personal style and make the most of your appearance for everyday confidence.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Personal color analysis</li>
+                  <li>Makeup lessons for daily wear</li>
+                  <li>Wardrobe consultation</li>
+                  <li>Hair styling techniques you can do at home</li>
+                  <li>Product recommendations for your skin type and tone</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Initial Consultation (1.5 hours): $120</p>
+                <p class="mb-2 text-red-900">Makeup Lesson (1 hour): $90</p>
+                <p class="mb-2 text-red-900">Full Style Package (3 sessions): $250</p>
+                <p class="mb-4 text-sm text-gray-700">*Includes follow-up support via email</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art and Creative Work Container -->
+      <div class="mb-16 bg-white rounded-xl shadow-lg overflow-hidden">
+        <h2 class="text-2xl font-bold text-white py-4 px-6 sub_heading">Art and Creative Work</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border-b">
+          <div class="service-tab active cursor-pointer py-4 text-center border-r" data-target="acrylic-paintings">
+            Acrylic and Canvas Paintings</div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="cartoon-caricatures">Cartoon
+            Family Caricatures</div>
+          <div class="service-tab cursor-pointer py-4 text-center border-r" data-target="craft-projects">Craft and
+            Custom Projects</div>
+          <div class="service-tab cursor-pointer py-4 text-center" data-target="face-painting">Face Painting and
+            Temporary Tattoo</div>
+        </div>
+
+        <div class="p-6">
+          <!-- Acrylic Paintings -->
+          <div id="acrylic-paintings"
+            class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/art-acrylic-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Acrylic
+              and Canvas Paintings</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Beautiful custom acrylic paintings created just for you.
+                  Perfect for home decor, gifts, or commemorating special occasions with unique artwork.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Custom paintings in various sizes</li>
+                  <li>Abstract, landscape, portrait, or decorative styles</li>
+                  <li>Color schemes to match your decor</li>
+                  <li>Digital proof provided before final painting</li>
+                  <li>Framing options available</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Small (8"x10"): $80-$120</p>
+                <p class="mb-2 text-red-900">Medium (16"x20"): $150-$250</p>
+                <p class="mb-2 text-red-900">Large (24"x36"): $300-$500</p>
+                <p class="mb-4 text-sm text-gray-700">*Prices vary based on complexity</p>
+                <a href="contact.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Inquire Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartoon Caricatures -->
+          <div id="cartoon-caricatures"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/art-caricature-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Cartoon
+              Family Caricatures</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Fun and personalized cartoon-style caricatures of
+                  individuals, couples, or families. A unique way to capture personalities in art.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Digital or traditional hand-drawn options</li>
+                  <li>Various styles from cute to comical</li>
+                  <li>Perfect for gifts, invitations, or announcements</li>
+                  <li>Include pets, hobbies, or special elements</li>
+                  <li>Printing services available</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Single Person: $60</p>
+                <p class="mb-2 text-red-900">Couple: $90</p>
+                <p class="mb-2 text-red-900">Family (up to 5): $140</p>
+                <p class="mb-4 text-sm text-gray-700">*$20 per additional person</p>
+                <a href="contact.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Inquire Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Craft Projects -->
+          <div id="craft-projects"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/art-craft-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Craft and
+              Custom Projects</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Handcrafted custom items for any occasion. From decorative
+                  pieces to functional art, our crafts add a personal touch to your home or event.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Custom home decor items</li>
+                  <li>Event decorations for weddings, parties, etc.</li>
+                  <li>Personalized gifts with artistic flair</li>
+                  <li>Seasonal and holiday crafts</li>
+                  <li>Corporate gifts and promotional items</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Small Crafts: $25-$75</p>
+                <p class="mb-2 text-red-900">Medium Projects: $75-$150</p>
+                <p class="mb-2 text-red-900">Large/Complex Projects: $150+</p>
+                <p class="mb-4 text-sm text-gray-700">*Consultation required for custom quotes</p>
+                <a href="contact.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Inquire Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Face Painting -->
+          <div id="face-painting"
+            class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
+            style="background-image: url('images/art-facepainting-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Face
+              Painting and Temporary Tattoo</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-2/3">
+                <p class="text-xl mb-4 dancing opacity-95">Professional face painting and temporary tattoos for
+                  parties and events. Using only skin-safe, hypoallergenic products for all ages.</p>
+                <ul class="list-disc pl-5 mb-4 text-xl dancing opacity-95">
+                  <li>Full-face or small designs available</li>
+                  <li>Custom temporary henna-style tattoos</li>
+                  <li>Perfect for children's parties or corporate events</li>
+                  <li>Festival and themed designs</li>
+                  <li>Quick application for large groups</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
+                <p class="mb-2 text-red-900">Hourly Rate: $90 per hour</p>
+                <p class="mb-2 text-red-900">Per Person (small design): $10-$15</p>
+                <p class="mb-2 text-red-900">Per Person (full face): $15-$25</p>
+                <p class="mb-4 text-sm text-gray-700">*Minimum 2-hour booking for events</p>
+                <a href="booking.html"
+                  class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-white-800 text-white py-6 bg-image">
     <div class="container mx-auto px-4 text-center">
-      <p>123 Henna Lane, Art City, AC 12345</p>
-      <p class="mt-2">Phone: +41 78 317 30 17</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="text-gray-400 hover:text-white">Facebook</a>
-        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="text-gray-400 hover:text-white">Instagram</a>
-        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white">WhatsApp</a>
-        <a href="contact.html" class="text-gray-400 hover:text-white">Contact</a>
+      <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
+      <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
+      <div class="mt-4 flex justify-center space-x-6 text-xl">
+        <a href="https://www.facebook.com/share/1FJ3ptXfy4/"
+          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs"
+          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white rounded-md social-icon"
+          aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="contact.html" class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Contact">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
-      <p class="mt-4">© 2025 HennArtistry. All rights reserved.</p>
+      <p class="mt-4 text-sm">© 2025 HennArtistry. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+
+  <script src="services.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

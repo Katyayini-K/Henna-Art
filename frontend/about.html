@@ -1,57 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HennArtistry - About</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>P_H_S - About</title>
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Fonts: Poetsen One + Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: 'Poetsen One', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+      background-color: #f7fafc;
+      /* Tailwind gray-100 */
+    }
+
+    .dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Minimal hamburger styles (in case style.css is incomplete) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #7f1d1d; /* Matches text-red-900 */
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav {
+      display: none;
+    }
+    .mobile-nav.active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    /* Optional: Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
+
+<body class="bg-gray-100">
+
   <!-- Navigation -->
-  <nav class="bg-white shadow-md sticky top-0 z-10">
+  <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-pink-600">HennArtistry</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-gray-700 hover:text-pink-600">Home</a></li>
-        <li><a href="about.html" class="text-gray-700 hover:text-pink-600">About</a></li>
-        <li><a href="services.html" class="text-gray-700 hover:text-pink-600">Services</a></li>
-        <li><a href="gallery.html" class="text-gray-700 hover:text-pink-600">Gallery</a></li>
-        <li><a href="contact.html" class="text-gray-700 hover:text-pink-600">Contact</a></li>
-        <li><a href="booking.html" class="text-white bg-pink-600 px-4 py-2 rounded hover:bg-pink-700">Book Now</a></li>
-      </ul>
+      <a href="index.html">
+        <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="nav-links hidden md:block">
+        <ul class="flex space-x-4 items-center">
+          <li><a href="index.html" class="text-gray-700 hover:text-red-800">Home</a></li>
+          <li><a href="about.html" class="text-red-800 hover:text-red-800 font-semibold">About</a></li>
+          <li><a href="services.html" class="text-gray-700 hover:text-red-800">Services</a></li>
+          <li><a href="gallery.html" class="text-gray-700 hover:text-red-800">Gallery</a></li>
+          <li><a href="contact.html" class="text-gray-700 hover:text-red-800">Contact</a></li>
+          <li>
+            <a href="booking.html" class="bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
+              Book Now
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Icon -->
+      <div class="hamburger md:hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav md:hidden px-4 pb-4 space-y-2">
+      <ul>
+        <li><a href="index.html" class="block text-gray-700 hover:text-red-800">Home</a></li>
+        <li><a href="about.html" class="block text-red-800 hover:text-red-800 font-semibold">About</a></li>
+        <li><a href="services.html" class="block text-gray-700 hover:text-red-800">Services</a></li>
+        <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
+        <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
+        <li>
+          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book
+            Now</a>
+        </li>
+      </ul>
+    </nav>
   </nav>
 
   <!-- About Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">About HennArtistry</h1>
-      <div class="flex flex-col md:flex-row items-center">
-        <img src="images/artist.jpg" alt="Henna Artist" class="w-full md:w-1/2 h-96 object-cover rounded-lg mb-6 md:mb-0 md:mr-8">
-        <div>
-          <p class="text-lg text-gray-600 mb-4">At HennArtistry, we bring the ancient art of henna to life with modern elegance. Our skilled artist, with over 10 years of experience, specializes in creating intricate and personalized designs for weddings, parties, and special occasions.</p>
-          <p class="text-lg text-gray-600">We are passionate about celebrating your unique moments with stunning henna that reflects your style and story. Let us adorn you with beauty that lasts.</p>
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-2">
+      <h1 class="text-4xl font-bold text-center mb-4 dancing text-red-900">About Priyas_Henna_Styling</h1>
+      <div class="flex flex-col md:flex-row items-center py-1">
+        <img src="images/about_P_H_S.png" alt="Henna Artist"
+          class="w-full md:w-1/2 object-cover rounded-lg md:mb-0 md:mr-8 mt-2" />
+
+        <div class="dancing bg-red-900 p-12 m-10 rounded-lg shadow-lg mb-2">
+          <p class="text-lg text-white mb-4">
+            I'm Priya - the artist behind <b>Priyas_Henna_Styling</b>. I bring creativity to life through beautiful
+            henna,
+            elegant makeup styling, and personalized artwork. With over 10 years of experience, my passion is to help
+            people feel confident, unique, and celebrated through art.
+          </p>
+          <p class="text-lg text-white mb-4">
+            What began as a love for traditional Indian henna has grown into a wide range of creative services. From
+            bridal mehndi and party styling, to acrylic paintings and cartoon family caricatures, I pour heart and
+            detail into every piece I create.
+          </p>
+          <p class="text-lg text-white mb-4">
+            Whether you're preparing for a big day, looking for a thoughtful gift, or simply want something special just
+            for you I'm here to make your moment more beautiful and meaningful.
+          </p>
+          <p class="text-xl text-white text-right px-10">-Priya</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-white-800 text-white py-6 bg-image">
     <div class="container mx-auto px-4 text-center">
-      <p>123 Henna Lane, Art City, AC 12345</p>
-      <p class="mt-2">Phone: +41 78 317 30 17</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="text-gray-400 hover:text-white">Facebook</a>
-        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="text-gray-400 hover:text-white">Instagram</a>
-        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white">WhatsApp</a>
-        <a href="contact.html" class="text-gray-400 hover:text-white">Contact</a>
+      <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
+      <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
+      <div class="mt-4 flex justify-center space-x-6 text-xl">
+        <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="rounded-md social-icon" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="rounded-md social-icon"
+          aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://whatsapp.com" class="rounded-md social-icon" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="contact.html" class="rounded-md social-icon" aria-label="Contact">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
-      <p class="mt-4">© 2025 HennArtistry. All rights reserved.</p>
+      <p class="mt-4 text-sm">© 2025 HennArtistry. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+  </script>
+
   <script src="script.js"></script>
 </body>
+
 </html>

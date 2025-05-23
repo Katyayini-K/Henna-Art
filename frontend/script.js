@@ -374,3 +374,4 @@ function submitBookingForm() {
       bookingMessageElement.textContent = "There was an error submitting your booking: " + error.message;
     });
 }
+
