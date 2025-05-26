@@ -91,35 +91,44 @@
       display: none;
       cursor: pointer;
     }
+
     .hamburger span {
       display: block;
       width: 25px;
       height: 3px;
-      background: #7f1d1d; /* Matches text-red-900 */
+      background: #7f1d1d;
+      /* Matches text-red-900 */
       margin: 5px 0;
       transition: all 0.3s ease;
     }
+
     .mobile-nav {
       display: none;
     }
+
     .mobile-nav.active {
       display: block;
     }
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
+
       .hamburger {
         display: block;
       }
     }
+
     /* Optional: Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
+
     .hamburger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
@@ -195,6 +204,7 @@
         </div>
 
         <div class="p-6">
+          <!-- 1 -->
           <!-- Bridal Henna -->
           <div id="bridal-henna"
             class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
@@ -219,8 +229,8 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Full Bridal Package: $300-$500</p>
-                <p class="mb-2 text-red-900">Half Bridal Package: $200-$350</p>
+                <p class="mb-2 text-red-900">Full Bridal Package: from CHF 100</p>
+                <!-- <p class="mb-2 text-red-900">Half Bridal Package: $200-$350</p> -->
                 <p class="mb-6 text-sm text-gray-700">*Prices may vary based on design complexity and travel distance
                 </p>
                 <a href="booking.html"
@@ -230,7 +240,7 @@
               </div>
             </div>
           </div>
-
+          <!-- 2 -->
           <!-- Party Henna -->
           <div id="party-henna"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
@@ -251,8 +261,8 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Hourly Rate: $100 per hour</p>
-                <p class="mb-2 text-red-900">Per Person: $20-$50 (depending on design size)</p>
+                <!-- <p class="mb-2 text-red-900">Hourly Rate: $100 per hour</p> -->
+                <p class="mb-2 text-red-900">Per Person: from CHF 30 (depending on design size)</p>
                 <p class="mb-4 text-sm text-gray-700">*Minimum 2-hour booking for parties</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -261,7 +271,7 @@
               </div>
             </div>
           </div>
-
+          <!-- 3 -->
           <!-- Custom Designs -->
           <div id="custom-designs"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
@@ -282,10 +292,10 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Small Designs: $30-$50</p>
-                <p class="mb-2 text-red-900">Medium Designs: $50-$100</p>
-                <p class="mb-2 text-red-900">Large/Complex Designs: $100-$200</p>
-                <p class="mb-4 text-sm text-gray-700">*Consultation fee: $25 (applied toward service)</p>
+                <p class="mb-2 text-red-900">Designs: from CHF 20</p>
+                <!-- <p class="mb-2 text-red-900">Medium Designs: $50-$100</p>
+                <p class="mb-2 text-red-900">Large/Complex Designs: $100-$200</p> -->
+                <p class="mb-4 text-sm text-gray-700">*Fee applied towards service based on hours</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
                   Book Now
@@ -293,7 +303,7 @@
               </div>
             </div>
           </div>
-
+          <!-- 4 -->
           <!-- Henna Workshops -->
           <div id="henna-workshops"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
@@ -315,9 +325,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Beginner Workshop (3 hours): $75 per person</p>
-                <p class="mb-2 text-red-900">Advanced Workshop (5 hours): $120 per person</p>
-                <p class="mb-2 text-red-900">Private Workshop: $200 (up to 3 people)</p>
+                <p class="mb-2 text-red-900">Workshop: from CHF 40 per session</p>
+                <!-- <p class="mb-2 text-red-900">Advanced Workshop (5 hours): $120 per person</p>
+                <p class="mb-2 text-red-900">Private Workshop: $200 (up to 3 people)</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Group discounts available for 5+ participants</p>
                 <a href="contact.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -344,10 +354,11 @@
         </div>
 
         <div class="p-6">
+          <!-- 5 -->
           <!-- Bridal Makeup -->
           <div id="bridal-makeup"
             class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/makeup-bridal-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/bridal_makeup_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Bridal
               Makeup</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -365,10 +376,10 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Bridal Makeup Package: $250-$350</p>
-                <p class="mb-2 text-red-900">Trial Session: $100</p>
-                <p class="mb-2 text-red-900">Bridesmaid Makeup: $120 per person</p>
-                <p class="mb-4 text-sm text-gray-700">*Package includes trial, day-of makeup, and touch-up kit</p>
+                <p class="mb-2 text-red-900">Bridal Makeup: from CHF 100</p>
+                <!-- <p class="mb-2 text-red-900">Trial Session: $100</p>
+                <p class="mb-2 text-red-900">Bridesmaid Makeup: $120 per person</p> -->
+                <p class="mb-4 text-sm text-gray-700">*Package excludes trial, day-of makeup, and touch-up kit</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
                   Book Now
@@ -376,11 +387,11 @@
               </div>
             </div>
           </div>
-
+          <!-- 6 -->
           <!-- Party Styling -->
           <div id="party-styling"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/makeup-party-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/party_styling_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Party
               Styling</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -397,9 +408,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Makeup Only: $85</p>
-                <p class="mb-2 text-red-900">Hair Styling: $65</p>
-                <p class="mb-2 text-red-900">Hair & Makeup Package: $140</p>
+                <p class="mb-2 text-red-900">Hair & Makeup: from CHF 50</p>
+                <!-- <p class="mb-2 text-red-900">Hair Styling: CHF 55</p>
+                <p class="mb-2 text-red-900">Hair & Makeup Package: CHF 100</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Group discounts available for 3+ people</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -408,11 +419,11 @@
               </div>
             </div>
           </div>
-
+          <!-- 7 -->
           <!-- Kids and Teams Style -->
           <div id="kids-teams-style"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/makeup-kids-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/kids_styling_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Kids and
               Teams Style</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -429,9 +440,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Kids Hair Styling: $35</p>
-                <li>Kids Light Makeup: $25</li>
-                <p class="mb-2 text-red-900">Team Rate: $20 per person (minimum 5 people)</p>
+                <p class="mb-2 text-red-900">Kids Styling: from CHF 25</p>
+                <!-- <li>Kids Light Makeup: $25</li>
+                <p class="mb-2 text-red-900">Team Rate: $20 per person (minimum 5 people)</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Travel fee may apply for on-location services</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -440,11 +451,11 @@
               </div>
             </div>
           </div>
-
+          <!-- 8 -->
           <!-- Personal Styling -->
           <div id="personal-styling"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/makeup-personal-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/personal_styling_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Personal
               Styling</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -461,9 +472,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Initial Consultation (1.5 hours): $120</p>
-                <p class="mb-2 text-red-900">Makeup Lesson (1 hour): $90</p>
-                <p class="mb-2 text-red-900">Full Style Package (3 sessions): $250</p>
+                <p class="mb-2 text-red-900">Initial Consultation (1 hour): from CHF 50</p>
+                <!-- <p class="mb-2 text-red-900">Makeup Lesson (1 hour): $90</p>
+                <p class="mb-2 text-red-900">Full Style Package (3 sessions): $250</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Includes follow-up support via email</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -491,10 +502,11 @@
         </div>
 
         <div class="p-6">
+          <!-- 9 -->
           <!-- Acrylic Paintings -->
           <div id="acrylic-paintings"
             class="henna-background service-section active bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/art-acrylic-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/acrylic_painting_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Acrylic
               and Canvas Paintings</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -511,10 +523,10 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Small (8"x10"): $80-$120</p>
-                <p class="mb-2 text-red-900">Medium (16"x20"): $150-$250</p>
-                <p class="mb-2 text-red-900">Large (24"x36"): $300-$500</p>
-                <p class="mb-4 text-sm text-gray-700">*Prices vary based on complexity</p>
+                <p class="mb-2 text-red-900">Paintings: from CHF 40</p>
+                <!-- <p class="mb-2 text-red-900">Medium (16"x20"): $150-$250</p>
+                <p class="mb-2 text-red-900">Large (24"x36"): $300-$500</p> -->
+                <p class="mb-4 text-sm text-gray-700">*Prices vary based on complexity, size of canvas</p>
                 <a href="contact.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
                   Inquire Now
@@ -522,11 +534,11 @@
               </div>
             </div>
           </div>
-
+          <!-- 10 -->
           <!-- Cartoon Caricatures -->
           <div id="cartoon-caricatures"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/art-caricature-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/cartoon_custom_caricatures_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Cartoon
               Family Caricatures</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -543,10 +555,10 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Single Person: $60</p>
-                <p class="mb-2 text-red-900">Couple: $90</p>
-                <p class="mb-2 text-red-900">Family (up to 5): $140</p>
-                <p class="mb-4 text-sm text-gray-700">*$20 per additional person</p>
+                <p class="mb-2 text-red-900">Single Person: CHF 30</p>
+                <p class="mb-2 text-red-900">Couple: CHF 50</p>
+                <p class="mb-2 text-red-900">Family (up to 5): CHF 120</p>
+                <p class="mb-4 text-sm text-gray-700">*CHF 20 per additional person</p>
                 <a href="contact.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
                   Inquire Now
@@ -554,11 +566,12 @@
               </div>
             </div>
           </div>
+          <!-- 11 -->
 
           <!-- Craft Projects -->
           <div id="craft-projects"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/art-craft-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/craft_custom_projects_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Craft and
               Custom Projects</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -575,9 +588,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Small Crafts: $25-$75</p>
-                <p class="mb-2 text-red-900">Medium Projects: $75-$150</p>
-                <p class="mb-2 text-red-900">Large/Complex Projects: $150+</p>
+                <p class="mb-2 text-red-900">Crafts: from CHF 40</p>
+                <!-- <p class="mb-2 text-red-900">Medium Projects: $75-$150</p>
+                <p class="mb-2 text-red-900">Large/Complex Projects: $150+</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Consultation required for custom quotes</p>
                 <a href="contact.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -586,11 +599,12 @@
               </div>
             </div>
           </div>
+          <!-- 12 -->
 
           <!-- Face Painting -->
           <div id="face-painting"
             class="henna-background service-section bg-gradient-to-r from-[#edbc80]/30 to-[#800000]/10 border border-[#edbc80]/50 shadow-md rounded-lg p-6 text-white"
-            style="background-image: url('images/art-facepainting-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            style="background-image: url('images/temporary_tatto_bg.png'); background-size: cover; background-position: center; background-blend-mode: overlay;">
             <h3 class="text-3xl font-semibold mb-4 dancing" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">Face
               Painting and Temporary Tattoo</h3>
             <div class="flex flex-col md:flex-row gap-8">
@@ -607,9 +621,9 @@
               </div>
               <div class="md:w-1/3 bg-white bg-opacity-50 p-4 rounded-lg shadow-lg">
                 <h4 class="font-bold text-lg mb-2 text-red-900">Pricing</h4>
-                <p class="mb-2 text-red-900">Hourly Rate: $90 per hour</p>
-                <p class="mb-2 text-red-900">Per Person (small design): $10-$15</p>
-                <p class="mb-2 text-red-900">Per Person (full face): $15-$25</p>
+                <p class="mb-2 text-red-900">Hourly Rate: Packages available</p>
+                <!-- <p class="mb-2 text-red-900">Per Person (small design): $10-$15</p>
+                <p class="mb-2 text-red-900">Per Person (full face): $15-$25</p> -->
                 <p class="mb-4 text-sm text-gray-700">*Minimum 2-hour booking for events</p>
                 <a href="booking.html"
                   class="block text-center bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">
@@ -651,7 +665,7 @@
 
   <!-- Mobile Menu Script -->
   <script>
-    document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.hamburger').addEventListener('click', function () {
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
     });
