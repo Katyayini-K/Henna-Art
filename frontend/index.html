@@ -66,35 +66,44 @@
       display: none;
       cursor: pointer;
     }
+
     .hamburger span {
       display: block;
       width: 25px;
       height: 3px;
-      background: #7f1d1d; /* Matches text-red-900 */
+      background: #7f1d1d;
+      /* Matches text-red-900 */
       margin: 5px 0;
       transition: all 0.3s ease;
     }
+
     .mobile-nav {
       display: none;
     }
+
     .mobile-nav.active {
       display: block;
     }
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
+
       .hamburger {
         display: block;
       }
     }
+
     /* Optional: Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
+
     .hamburger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
@@ -143,7 +152,8 @@
         <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
         <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
         <li>
-          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book Now</a>
+          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book
+            Now</a>
         </li>
       </ul>
     </nav>
@@ -273,8 +283,8 @@
           class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://whatsapp.com" class="text-gray-400 hover:text-white rounded-md social-icon"
-          aria-label="WhatsApp">
+        <a href="https://api.whatsapp.com/send?phone=41783173017&text=Hello%2C+I+would+like+to+know+more+about+your+services"
+          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="WhatsApp" target="_blank">
           <i class="fab fa-whatsapp"></i>
         </a>
         <a href="contact.html" class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="Contact">
@@ -287,7 +297,7 @@
 
   <!-- Mobile Menu Script -->
   <script>
-    document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.hamburger').addEventListener('click', function () {
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
     });
