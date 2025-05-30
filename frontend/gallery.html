@@ -31,14 +31,6 @@
       font-family: 'Dancing Script', cursive;
     }
 
-    /* Henna-style animated background */
-    /* .henna-background {
-        background-image: url('images/henna-bg.png');
-        background-repeat: repeat;
-        background-size: 300px;
-        animation: moveHenna 60s linear infinite;
-      } */
-
     /* Minimal hamburger styles (in case style.css is incomplete) */
     .hamburger {
       display: none;
@@ -76,15 +68,46 @@
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
     }
+
+    /* Gallery image styles */
+    .gallery-img {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+  .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox navigation buttons */
+    .lightbox-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .lightbox-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    #prev-lightbox {
+      left: 10px;
+    }
+    #next-lightbox {
+      right: 10px;
+    }
   </style>
 </head>
 
-<body class="bg-gray-100 henna-background">
+<body class="bg-gray-100">
   <!-- Navigation -->
   <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html">
-        <!-- <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
         <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
       </a>
 
@@ -131,15 +154,67 @@
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h1 class="text-4xl font-bold text-center text-red-800 mb-12 dancing">Our Gallery</h1>
-      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Dynamic images will be loaded here -->
+
+      <!-- Henna Services -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6 dancing">Henna Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12" data-category="henna">
+        <img src="images/henna_services/image1.jpg" alt="Henna Service 1" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image2.jpg" alt="Henna Service 2" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image3.jpg" alt="Henna Service 3" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image4.jpg" alt="Henna Service 4" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image5.jpg" alt="Henna Service 5" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image6.jpg" alt="Henna Service 6" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image7.jpg" alt="Henna Service 7" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image8.jpg" alt="Henna Service 8" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image9.jpg" alt="Henna Service 9" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/henna_services/image10.jpg" alt="Henna Service 10" class="gallery-img w-full h-64 object-cover rounded-lg">
+      </div>
+
+      <!-- Makeup Services -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6 dancing">Makeup-Styling Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12" data-category="makeup">
+        <img src="images/makeup_services/image1.jpg" alt="Makeup Service 1" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image2.jpg" alt="Makeup Service 2" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image3.jpg" alt="Makeup Service 3" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image4.jpg" alt="Makeup Service 4" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image5.jpg" alt="Makeup Service 5" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image6.jpg" alt="Makeup Service 6" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image7.jpg" alt="Makeup Service 7" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image8.jpg" alt="Makeup Service 8" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image9.jpg" alt="Makeup Service 9" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/makeup_services/image10.jpg" alt="Makeup Service 10" class="gallery-img w-full h-64 object-cover rounded-lg">
+      </div>
+
+      <!-- Craft-Painting Services -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6 dancing">Tatto-Craft-Painting Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12" data-category="craft">
+        <img src="images/craft_painting_services/image1.jpg" alt="Craft-Painting Service 1" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image2.jpg" alt="Craft-Painting Service 2" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image3.jpg" alt="Craft-Painting Service 3" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image4.jpg" alt="Craft-Painting Service 4" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image5.jpg" alt="Craft-Painting Service 5" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image6.jpg" alt="Craft-Painting Service 6" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image7.jpg" alt="Craft-Painting Service 7" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image8.jpg" alt="Craft-Painting Service 8" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image9.jpg" alt="Craft-Painting Service 9" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/craft_painting_services/image10.jpg" alt="Craft-Painting Service 10" class="gallery-img w-full h-64 object-cover rounded-lg">
+      </div>
+
+      <!-- Products Available to Purchase -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6 dancing">Products Available to Purchase</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12" data-category="products">
+        <img src="images/products/image1.jpg" alt="Product 1" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/products/image2.jpg" alt="Product 2" class="gallery-img w-full h-64 object-cover rounded-lg">
+        <img src="images/products/image3.jpg" alt="Product 3" class="gallery-img w-full h-64 object-cover rounded-lg">
       </div>
     </div>
   </section>
 
   <!-- Lightbox (Hidden by default) -->
   <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50">
+    <button id="prev-lightbox" class="lightbox-btn">←</button>
     <img id="lightbox-img" src="" alt="Lightbox Image" class="max-w-full max-h-full" />
+    <button id="next-lightbox" class="lightbox-btn">→</button>
     <button id="close-lightbox" class="absolute top-4 right-4 text-white text-2xl">×</button>
   </div>
 
@@ -178,8 +253,66 @@
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
     });
+
+    // Lightbox functionality with navigation
+    const galleryImages = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeLightbox = document.getElementById('close-lightbox');
+    const prevLightbox = document.getElementById('prev-lightbox');
+    const nextLightbox = document.getElementById('next-lightbox');
+    let currentImageIndex = -1;
+    let currentCategoryImages = [];
+
+    // Open lightbox and set category images
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentImageIndex = index;
+        const categoryDiv = img.closest('[data-category]');
+        const category = categoryDiv.getAttribute('data-category');
+        currentCategoryImages = document.querySelectorAll(`[data-category="${category}"] .gallery-img`);
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('hidden');
+      });
+    });
+
+    // Close lightbox
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      currentImageIndex = -1;
+      currentCategoryImages = [];
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        currentImageIndex = -1;
+        currentCategoryImages = [];
+      }
+    });
+
+    // Navigate to previous image
+    prevLightbox.addEventListener('click', () => {
+      if (currentCategoryImages.length > 0) {
+        currentImageIndex = (currentImageIndex - 1 + currentCategoryImages.length) % currentCategoryImages.length;
+        const prevImage = currentCategoryImages[currentImageIndex];
+        lightboxImg.src = prevImage.src;
+        lightboxImg.alt = prevImage.alt;
+      }
+    });
+
+    // Navigate to next image
+    nextLightbox.addEventListener('click', () => {
+      if (currentCategoryImages.length > 0) {
+        currentImageIndex = (currentImageIndex + 1) % currentCategoryImages.length;
+        const nextImage = currentCategoryImages[currentImageIndex];
+        lightboxImg.src = nextImage.src;
+        lightboxImg.alt = nextImage.alt;
+      }
+    });
   </script>
-  <script src="script.js"></script>
 </body>
 
 </html>
