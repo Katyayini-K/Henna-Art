@@ -25,6 +25,9 @@
       font-family: 'Poetsen One', sans-serif;
       position: relative;
       overflow-x: hidden;
+      background-color: #f7fafc;
+      /* Tailwind gray-100 */
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .dancing {
@@ -53,13 +56,10 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
 
-    /* Henna-style animated background */
-    /* .henna-background {
-      background-image: url('images/henna-bg.png');
-      background-repeat: repeat;
-      background-size: 300px;
-      animation: moveHenna 60s linear infinite;
-    } */
+    /* Logo transition */
+    .logo-img {
+      transition: opacity 0.3s ease;
+    }
 
     /* Minimal hamburger styles (in case style.css is incomplete) */
     .hamburger {
@@ -95,7 +95,7 @@
       }
     }
 
-    /* Optional: Hamburger animation */
+    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -108,7 +108,7 @@
       transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    /* Nav Bar Stickey */
+    /* Nav Bar Sticky */
     .sticky-nav {
       position: fixed;
       top: 0;
@@ -123,6 +123,230 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       /* Optional: Adds a subtle shadow */
     }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1a202c;
+      /* Tailwind gray-900 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode nav.bg-white {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+    }
+
+    body.dark-mode .nav-links a,
+    body.dark-mode .mobile-nav a {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .nav-links a:hover,
+    body.dark-mode .mobile-nav a:hover {
+      color: #feb2b2;
+      /* Tailwind red-300 */
+    }
+
+    body.dark-mode .nav-links a.text-red-800,
+    body.dark-mode .mobile-nav a.text-red-800 {
+      color: #fc8181;
+      /* Tailwind red-400 */
+    }
+
+    body.dark-mode .hamburger span {
+      background: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode section.bg-gray-50 {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+    }
+
+    body.dark-mode section.bg-white {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+    }
+
+    body.dark-mode h1.text-white,
+    body.dark-mode p.text-white {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode h2.text-red-800,
+    body.dark-mode b.text-red-800,
+    body.dark-mode p.text-red-800 {
+      color: #fc8181;
+      /* Tailwind red-400 */
+    }
+
+    body.dark-mode p.text-gray-600,
+    body.dark-mode h3.text-gray-600 {
+      color: #cbd5e0;
+      /* Tailwind gray-300 */
+    }
+
+    body.dark-mode h2.text-gray-800 {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .text-red-700 {
+      color: #fc8181;
+      /* Tailwind red-400 */
+    }
+
+    body.dark-mode footer.bg-white-800 {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode footer a.text-gray-400:hover {
+      color: #f7fafc;
+      /* Tailwind gray-100 */
+    }
+
+    body.dark-mode .book_now_button_home {
+      border-color: #e2e8f0;
+      /* Tailwind gray-200 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .book_now_button_home:hover {
+      background-color: #e2e8f0;
+      /* Tailwind gray-200 */
+      color: #7f1d1d;
+      /* Original hover color */
+      border-color: #7f1d1d;
+    }
+
+    /* Specific styles for Services and Testimonials sections in dark mode */
+    body.dark-mode section.bg-gray-50 .bg-white {
+      background-color: #4a5568;
+      /* Tailwind gray-700 for card backgrounds */
+    }
+
+    body.dark-mode section.bg-gray-50 h3.text-xl {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    /* Dark mode toggle button */
+    .mode-toggle {
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: #7f1d1d;
+      /* Matches text-red-900 */
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .mode-toggle {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    /* System prefers dark mode (fallback for when JS-based toggle isn't used) */
+    @media (prefers-color-scheme: dark) {
+      body:not(.light-mode) {
+        background-color: #1a202c;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) nav.bg-white {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) .nav-links a,
+      body:not(.light-mode) .mobile-nav a {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .nav-links a:hover,
+      body:not(.light-mode) .mobile-nav a:hover {
+        color: #feb2b2;
+      }
+
+      body:not(.light-mode) .nav-links a.text-red-800,
+      body:not(.light-mode) .mobile-nav a.text-red-800 {
+        color: #fc8181;
+      }
+
+      body:not(.light-mode) .hamburger span {
+        background: #e2e8f0;
+      }
+
+      body:not(.light-mode) section.bg-gray-50 {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) section.bg-white {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) h1.text-white,
+      body:not(.light-mode) p.text-white {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) h2.text-red-800,
+      body:not(.light-mode) b.text-red-800,
+      body:not(.light-mode) p.text-red-800 {
+        color: #fc8181;
+      }
+
+      body:not(.light-mode) p.text-gray-600,
+      body:not(.light-mode) h3.text-gray-600 {
+        color: #cbd5e0;
+      }
+
+      body:not(.light-mode) h2.text-gray-800 {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .text-red-700 {
+        color: #fc8181;
+      }
+
+      body:not(.light-mode) footer.bg-white-800 {
+        background-color: #2d3748;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) footer a.text-gray-400:hover {
+        color: #f7fafc;
+      }
+
+      body:not(.light-mode) .book_now_button_home {
+        border-color: #e2e8f0;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .book_now_button_home:hover {
+        background-color: #e2e8f0;
+        color: #7f1d1d;
+        border-color: #7f1d1d;
+      }
+
+      body:not(.light-mode) section.bg-gray-50 .bg-white {
+        background-color: #4a5568;
+        /* Tailwind gray-700 for card backgrounds */
+      }
+
+      body:not(.light-mode) section.bg-gray-50 h3.text-xl {
+        color: #e2e8f0;
+        /* Tailwind gray-200 */
+      }
+
+      body:not(.light-mode) .mode-toggle {
+        color: #e2e8f0;
+      }
+    }
   </style>
 </head>
 
@@ -132,8 +356,8 @@
   <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html">
-        <!-- <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
-        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12 logo-img">
+        <!-- <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
       </a>
 
       <!-- Desktop Menu -->
@@ -152,11 +376,16 @@
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger Icon -->
-      <div class="hamburger md:hidden">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Mobile Hamburger Icon and Mode Toggle -->
+      <div class="flex items-center space-x-4">
+        <button class="mode-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="hamburger md:hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
 
@@ -206,7 +435,8 @@
           <p class="text-gray-600">Glamorous, personalized transformations</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
-          <img src="images/art_and_creative_works_img.jpg" alt="Custom Henna" class="w-full h-48 object-cover rounded mb-4">
+          <img src="images/art_and_creative_works_img.jpg" alt="Custom Henna"
+            class="w-full h-48 object-cover rounded mb-4">
           <h3 class="text-xl font-semibold mb-2">Art and Creative Works</h3>
           <p class="text-gray-600">Personalized, unique, expressive creations</p>
         </div>
@@ -266,7 +496,7 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="text-gray-600 mb-4">"Hi <span class="text-red-800">Priya</span>,
+          <p class="text-gray-600 mb-4">"Hi <b class="text-red-800">Priya</b>,
             Thank you for your time and effort! I truly appreciate your passion for what you do.
             Your energy is incredible."
           </p>
@@ -277,8 +507,8 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="text-gray-600 mb-4">"Beautiful art <span class="text-red-800">Priya</span>. <br>
-            Always you will surprise me with your prefessional expertise &#x1F929;&#x1F973;"</p>
+          <p class="text-gray-600 mb-4">"Beautiful art <b class="text-red-800">Priya</b>. <br>
+            Always you will surprise me with your prefessional expertise 🤩🥳"</p>
           <p class="text-red-800">- Yashoda</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md text-center">
@@ -286,7 +516,7 @@
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
-          <p class="text-gray-600 mb-4">"I loved the mehndi design <span class="text-red-800">Priya</span>
+          <p class="text-gray-600 mb-4">"I loved the mehndi design <b class="text-red-800">Priya</b>
             created—elegant, detailed, and done with such care.
             Her talent truly shines through every stroke."</p>
           <p class="text-red-800">- Sonja</p>
@@ -321,11 +551,48 @@
     </div>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Mobile Menu and Mode Toggle Script -->
   <script>
+    // Mobile menu toggle
     document.querySelector('.hamburger').addEventListener('click', function () {
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+
+    // Dark mode toggle
+    const modeToggle = document.querySelector('.mode-toggle');
+    const modeIcon = modeToggle.querySelector('i');
+    const body = document.body;
+    const logoImg = document.querySelector('.logo-img'); // Select logo
+
+    // Check for saved mode preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    } else if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      modeIcon.classList.replace('fa-sun', 'fa-moon');
+      if (logoImg) logoImg.src = 'images/logo4.png'; // Set light logo
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    }
+
+    modeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+        if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Switch to dark logo
+      } else {
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+        if (logoImg) logoImg.src = 'images/logo4.png'; // Switch to light logo
+      }
     });
   </script>
 

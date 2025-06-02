@@ -24,6 +24,7 @@
     body {
       font-family: 'Poetsen One', sans-serif;
       background-color: #fff1f1;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .dancing {
@@ -55,42 +56,230 @@
       }
     }
 
+    /* Logo transition */
+    .logo-img {
+      transition: opacity 0.3s ease;
+    }
+
     /* Minimal hamburger styles (in case style.css is incomplete) */
     .hamburger {
       display: none;
       cursor: pointer;
     }
+
     .hamburger span {
       display: block;
       width: 25px;
       height: 3px;
-      background: #7f1d1d; /* Matches text-red-900 */
+      background: #7f1d1d;
+      /* Matches text-red-900 */
       margin: 5px 0;
       transition: all 0.3s ease;
     }
+
     .mobile-nav {
       display: none;
     }
+
     .mobile-nav.active {
       display: block;
     }
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
+
       .hamburger {
         display: block;
       }
     }
-    /* Optional: Hamburger animation */
+
+    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
+
     .hamburger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1a202c;
+      /* Tailwind gray-900 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode nav.bg-white {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+    }
+
+    body.dark-mode .nav-links a,
+    body.dark-mode .mobile-nav a {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .nav-links a:hover,
+    body.dark-mode .mobile-nav a:hover {
+      color: #feb2b2;
+      /* Tailwind red-300 */
+    }
+
+    body.dark-mode .nav-links a.text-gray-800,
+    body.dark-mode .mobile-nav a.text-gray-800 {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .nav-links a.text-gray-700,
+    body.dark-mode .mobile-nav a.text-gray-700 {
+      color: #cbd5e0;
+      /* Tailwind gray-300 */
+    }
+
+    body.dark-mode .hamburger span {
+      background: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode section .bg-red-800 {
+      background-color: #742a2a;
+      /* Tailwind red-900 adjusted for dark mode */
+    }
+
+    body.dark-mode section h1.text-white,
+    body.dark-mode section p.text-white {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .bg-white {
+      background-color: #4a5568;
+      /* Tailwind gray-700 */
+    }
+
+    body.dark-mode label.text-gray-700 {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode input,
+    body.dark-mode select,
+    body.dark-mode textarea {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+      border-color: #4a5568;
+      /* Tailwind gray-700 */
+    }
+
+    body.dark-mode footer.bg-white-800 {
+      background-color: #2d3748;
+      /* Tailwind gray-800 */
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    body.dark-mode footer a.text-gray-400:hover {
+      color: #f7fafc;
+      /* Tailwind gray-100 */
+    }
+
+    /* Dark mode toggle button */
+    .mode-toggle {
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: #7f1d1d;
+      /* Matches text-red-900 */
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .mode-toggle {
+      color: #e2e8f0;
+      /* Tailwind gray-200 */
+    }
+
+    /* System prefers dark mode (fallback for when JS-based toggle isn't used) */
+    @media (prefers-color-scheme: dark) {
+      body:not(.light-mode) {
+        background-color: #1a202c;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) nav.bg-white {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) .nav-links a,
+      body:not(.light-mode) .mobile-nav a {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .nav-links a:hover,
+      body:not(.light-mode) .mobile-nav a:hover {
+        color: #feb2b2;
+      }
+
+      body:not(.light-mode) .nav-links a.text-gray-800,
+      body:not(.light-mode) .mobile-nav a.text-gray-800 {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .nav-links a.text-gray-700,
+      body:not(.light-mode) .mobile-nav a.text-gray-700 {
+        color: #cbd5e0;
+      }
+
+      body:not(.light-mode) .hamburger span {
+        background: #e2e8f0;
+      }
+
+      body:not(.light-mode) section .bg-red-800 {
+        background-color: #742a2a;
+      }
+
+      body:not(.light-mode) section h1.text-white,
+      body:not(.light-mode) section p.text-white {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .bg-white {
+        background-color: #4a5568;
+      }
+
+      body:not(.light-mode) label.text-gray-700 {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) input,
+      body:not(.light-mode) select,
+      body:not(.light-mode) textarea {
+        background-color: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+      }
+
+      body:not(.light-mode) footer.bg-white-800 {
+        background-color: #2d3748;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) footer a.text-gray-400:hover {
+        color: #f7fafc;
+      }
+
+      body:not(.light-mode) .mode-toggle {
+        color: #e2e8f0;
+      }
     }
   </style>
 </head>
@@ -101,8 +290,8 @@
   <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html">
-        <!-- <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
-        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+        <!-- <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
+        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12 logo-img">
       </a>
 
       <!-- Desktop Menu -->
@@ -121,11 +310,16 @@
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger Icon -->
-      <div class="hamburger md:hidden">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Mobile Hamburger Icon and Mode Toggle -->
+      <div class="flex items-center space-x-4">
+        <button class="mode-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="hamburger md:hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
 
@@ -213,11 +407,48 @@
     </div>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Mobile Menu and Mode Toggle Script -->
   <script>
-    document.querySelector('.hamburger').addEventListener('click', function() {
+    // Mobile menu toggle
+    document.querySelector('.hamburger').addEventListener('click', function () {
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+
+    // Dark mode toggle
+    const modeToggle = document.querySelector('.mode-toggle');
+    const modeIcon = modeToggle.querySelector('i');
+    const body = document.body;
+    const logoImg = document.querySelector('.logo-img'); // Select logo
+
+    // Check for saved mode preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    } else if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      modeIcon.classList.replace('fa-sun', 'fa-moon');
+      if (logoImg) logoImg.src = 'images/logo4.png'; // Set light logo
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    }
+
+    modeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+        if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Switch to dark logo
+      } else {
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+        if (logoImg) logoImg.src = 'images/logo4.png'; // Switch to light logo
+      }
     });
   </script>
 

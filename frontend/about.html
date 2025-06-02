@@ -14,8 +14,7 @@
 
   <!-- Google Fonts: Poetsen One + Dancing Script -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap" rel="stylesheet" />
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css" />
@@ -25,12 +24,17 @@
       font-family: 'Poetsen One', sans-serif;
       position: relative;
       overflow-x: hidden;
-      background-color: #f7fafc;
-      /* Tailwind gray-100 */
+      background-color: #f7fafc; /* Tailwind gray-100 */
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .dancing {
       font-family: 'Dancing Script', cursive;
+    }
+
+    /* Logo transition */
+    .logo-img {
+      transition: opacity 0.3s ease;
     }
 
     /* Minimal hamburger styles (in case style.css is incomplete) */
@@ -38,6 +42,7 @@
       display: none;
       cursor: pointer;
     }
+
     .hamburger span {
       display: block;
       width: 25px;
@@ -46,29 +51,166 @@
       margin: 5px 0;
       transition: all 0.3s ease;
     }
+
     .mobile-nav {
       display: none;
     }
+
     .mobile-nav.active {
       display: block;
     }
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
+
       .hamburger {
         display: block;
       }
     }
-    /* Optional: Hamburger animation */
+
+    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
+
     .hamburger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1a202c; /* Tailwind gray-900 */
+      color: #e2e8f0; /* Tailwind gray-200 */
+    }
+
+    body.dark-mode nav.bg-white {
+      background-color: #2d3748; /* Tailwind gray-800 */
+    }
+
+    body.dark-mode .nav-links a,
+    body.dark-mode .mobile-nav a {
+      color: #e2e8f0; /* Tailwind gray-200 */
+    }
+
+    body.dark-mode .nav-links a:hover,
+    body.dark-mode .mobile-nav a:hover {
+      color: #feb2b2; /* Tailwind red-300 */
+    }
+
+    body.dark-mode .nav-links a.text-red-800,
+    body.dark-mode .mobile-nav a.text-red-800 {
+      color: #fc8181; /* Tailwind red-400 */
+    }
+
+    body.dark-mode .hamburger span {
+      background: #e2e8f0; /* Tailwind gray-200 */
+    }
+
+    body.dark-mode section.bg-white {
+      background-color: #2d3748; /* Tailwind gray-800 */
+    }
+
+    body.dark-mode .dancing.bg-red-900 {
+      background-color: #742a2a; /* Tailwind red-900 adjusted for dark mode */
+    }
+
+    body.dark-mode .dancing.bg-red-900 p {
+      color: #f7fafc; /* Tailwind gray-100 */
+    }
+
+    body.dark-mode footer.bg-gray-800 {
+      background-color: #2d3748; /* Tailwind gray-800 */
+      color: #e2e8f0; /* Tailwind gray-200 */
+    }
+
+    body.dark-mode footer a.text-gray-400:hover {
+      color: #f7fafc; /* Tailwind gray-100 */
+    }
+
+    /* Dark mode toggle button */
+    .mode-toggle {
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: #7f1d1d; /* Matches text-red-900 */
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .mode-toggle {
+      color: #e2e8f0; /* Tailwind gray-200 */
+    }
+
+    /* Dark mode styles for JS-controlled toggle */
+    body.dark-mode h1.text-red-900 {
+      color: #fc8181; /* Tailwind red-400 */
+    }
+
+    /* System prefers dark mode (fallback for when JS-based toggle isn't used) */
+    @media (prefers-color-scheme: dark) {
+      body:not(.light-mode) h1.text-red-900 {
+        color: #fc8181; /* Tailwind red-400 */
+      }
+    }
+
+    /* System prefers dark mode (fallback for when JS-based toggle isn't used) */
+    @media (prefers-color-scheme: dark) {
+      body:not(.light-mode) {
+        background-color: #1a202c;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) nav.bg-white {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) .nav-links a,
+      body:not(.light-mode) .mobile-nav a {
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) .nav-links a:hover,
+      body:not(.light-mode) .mobile-nav a:hover {
+        color: #feb2b2;
+      }
+
+      body:not(.light-mode) .nav-links a.text-red-800,
+      body:not(.light-mode) .mobile-nav a.text-red-800 {
+        color: #fc8181;
+      }
+
+      body:not(.light-mode) .hamburger span {
+        background: #e2e8f0;
+      }
+
+      body:not(.light-mode) section.bg-white {
+        background-color: #2d3748;
+      }
+
+      body:not(.light-mode) .dancing.bg-red-900 {
+        background-color: #742a2a;
+      }
+
+      body:not(.light-mode) .dancing.bg-red-900 p {
+        color: #f7fafc;
+      }
+
+      body:not(.light-mode) footer.bg-gray-800 {
+        background-color: #2d3748;
+        color: #e2e8f0;
+      }
+
+      body:not(.light-mode) footer a.text-gray-400:hover {
+        color: #f7fafc;
+      }
+
+      body:not(.light-mode) .mode-toggle {
+        color: #e2e8f0;
+      }
     }
   </style>
 </head>
@@ -79,8 +221,7 @@
   <nav class="bg-white shadow-md sticky top-0 z-20">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html">
-        <!-- <img src="images/logo1.png" alt="Priya's Henna Art of Celebration Logo" class="h-12"> -->
-        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12">
+        <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12 logo-img">
       </a>
 
       <!-- Desktop Menu -->
@@ -99,11 +240,16 @@
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger Icon -->
-      <div class="hamburger md:hidden">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Mobile Hamburger Icon and Mode Toggle -->
+      <div class="flex items-center space-x-4">
+        <button class="mode-toggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="hamburger md:hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
 
@@ -116,8 +262,7 @@
         <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
         <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
         <li>
-          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book
-            Now</a>
+          <a href="booking.html" class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-800">Book Now</a>
         </li>
       </ul>
     </nav>
@@ -128,24 +273,17 @@
     <div class="container mx-auto px-2">
       <h1 class="text-4xl font-bold text-center mb-4 dancing text-red-900">About Priyas_Henna_Styling</h1>
       <div class="flex flex-col md:flex-row items-center py-1">
-        <img src="images/about_P_H_S.png" alt="Henna Artist"
-          class="w-full md:w-1/2 object-cover rounded-lg md:mb-0 md:mr-8 mt-2" />
+        <img src="images/about_P_H_S.png" alt="Henna Artist" class="w-full md:w-1/2 object-cover rounded-lg md:mb-0 md:mr-8 mt-2" />
 
         <div class="dancing bg-red-900 p-12 m-10 rounded-lg shadow-lg mb-2">
           <p class="text-lg text-white mb-4">
-            I'm Priya - the artist behind <b>Priyas_Henna_Styling</b>. I bring creativity to life through beautiful
-            henna,
-            elegant makeup styling, and personalized artwork. With over 10 years of experience, my passion is to help
-            people feel confident, unique, and celebrated through art.
+            I'm Priya - the artist behind <b>Priyas_Henna_Styling</b>. I bring creativity to life through beautiful henna, elegant makeup styling, and personalized artwork. With over 10 years of experience, my passion is to help people feel confident, unique, and celebrated through art.
           </p>
           <p class="text-lg text-white mb-4">
-            What began as a love for traditional Indian henna has grown into a wide range of creative services. From
-            bridal mehndi and party styling, to acrylic paintings and cartoon family caricatures, I pour heart and
-            detail into every piece I create.
+            What began as a love for traditional Indian henna has grown into a wide range of creative services. From bridal mehndi and party styling, to acrylic paintings and cartoon family caricatures, I pour heart and detail into every piece I create.
           </p>
           <p class="text-lg text-white mb-4">
-            Whether you're preparing for a big day, looking for a thoughtful gift, or simply want something special just
-            for you I'm here to make your moment more beautiful and meaningful.
+            Whether you're preparing for a big day, looking for a thoughtful gift, or simply want something special just for you, I'm here to make your moment more beautiful and meaningful.
           </p>
           <p class="text-xl text-white text-right px-10">-Priya</p>
         </div>
@@ -154,7 +292,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white-800 text-white py-6 bg-image">
+  <footer class="bg-gray-800 text-white py-6 bg-image">
     <div class="container mx-auto px-4 text-center">
       <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
       <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
@@ -162,12 +300,10 @@
         <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="rounded-md social-icon" aria-label="Facebook">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="rounded-md social-icon"
-          aria-label="Instagram">
+        <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs" class="rounded-md social-icon" aria-label="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=41783173017&text=Hello%2C+I+would+like+to+know+more+about+your+services"
-          class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="WhatsApp" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=41783173017&text=Hello%2C+I+would+like+to+know+more+about+your+services" class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="WhatsApp" target="_blank">
           <i class="fab fa-whatsapp"></i>
         </a>
         <a href="contact.html" class="rounded-md social-icon" aria-label="Contact">
@@ -178,11 +314,48 @@
     </div>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Mobile Menu and Mode Toggle Script -->
   <script>
-    document.querySelector('.hamburger').addEventListener('click', function() {
+    // Mobile menu toggle
+    document.querySelector('.hamburger').addEventListener('click', function () {
       this.classList.toggle('active');
       document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+
+    // Dark mode toggle
+    const modeToggle = document.querySelector('.mode-toggle');
+    const modeIcon = modeToggle.querySelector('i');
+    const body = document.body;
+    const logoImg = document.querySelector('.logo-img'); // Select logo
+
+    // Check for saved mode preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    } else if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      modeIcon.classList.replace('fa-sun', 'fa-moon');
+      if (logoImg) logoImg.src = 'images/logo4.png'; // Set light logo
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+      if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Set dark logo
+    }
+
+    modeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+        if (logoImg) logoImg.src = 'images/Priya_dark_logo1.png'; // Switch to dark logo
+      } else {
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+        if (logoImg) logoImg.src = 'images/logo4.png'; // Switch to light logo
+      }
     });
   </script>
 
