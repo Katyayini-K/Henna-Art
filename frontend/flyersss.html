@@ -120,7 +120,7 @@
     }
 
     .flyer-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
@@ -132,7 +132,7 @@
       bottom: 0;
       background: rgba(0, 0, 0, 0.7);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -141,6 +141,25 @@
 
     .flyer-card:hover .flyer-overlay {
       opacity: 1;
+      transform: scale(1.02);
+    }
+
+    /* Remove hover effect on mobile */
+    @media (max-width: 768px) {
+      .flyer-overlay {
+        opacity: 1;
+        transform: none;
+      }
+
+      .flyer-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .flyer-card:hover .flyer-overlay {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     .modal {
@@ -153,14 +172,15 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.8);
       animation: fadeIn 0.3s ease;
+      overflow-y: auto;
     }
 
     .modal-content {
       position: relative;
-      margin: auto;
+      margin: 5% auto;
       padding: 0;
       width: 90%;
-      max-width: 700px;
+      max-width: 900px;
       top: 50%;
       transform: translateY(-50%);
       animation: slideIn 0.3s ease;
@@ -195,8 +215,9 @@
       color: #edbc80;
       border: 2px dotted #edbc80;
       border-radius: 12px 0px 12px 0px;
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-family: 'Dancing Script', cursive;
+      font-size: 1.1rem;
       text-decoration: none;
       transition: all 0.3s ease;
     }
@@ -235,6 +256,42 @@
       color: white;
       padding: 80px 0 60px 0;
       margin-top: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 1024px) {
+      .flyer-card img {
+        height: 300px;
+      }
+
+      .flyer-card h3 {
+        font-size: 1.5rem;
+      }
+
+      .flyer-card p {
+        font-size: 0.95rem;
+      }
+
+      .download-btn {
+        padding: 14px 28px;
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .modal-content {
+        max-width: 95%;
+        margin: 10% auto;
+      }
+
+      .download-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .flyer-card img {
+        height: 200px;
+      }
     }
 
     /* Dark mode styles */
@@ -492,46 +549,46 @@
 
   <!-- Page Header -->
   <section class="page-header">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-bold mb-4 dancing">Our Beautiful Flyers</h1>
-      <p class="text-xl mb-6">Download and share our promotional materials</p>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4 dancing">Our Beautiful Flyers</h1>
+      <p class="text-lg sm:text-xl mb-6">Download and share our promotional materials</p>
       <div class="flex justify-center items-center space-x-4">
         <i class="fas fa-download text-2xl"></i>
-        <span class="text-lg">Free Download • High Quality • Print Ready</span>
+        <span class="text-base sm:text-lg">Free Download • High Quality • Print Ready</span>
       </div>
     </div>
   </section>
 
   <!-- Flyers Section -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-red-800 mb-4">Promotional Materials</h2>
-        <p class="text-gray-600 dancing text-xl max-w-2xl mx-auto">
+  <section class="py-12 sm:py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-red-800 mb-4">Promotional Materials</h2>
+        <p class="text-red-600 dancing text-lg sm:text-xl max-w-2xl mx-auto">
           Explore our collection of beautiful flyers showcasing our services. Click on any flyer to view full size and download for sharing!
         </p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- Flyer 1 - Bridal Henna -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
           <div class="flyer-badge">NEW</div>
-          <img src="images/flyers/Henna Flyer 2.png" alt="Bridal Henna Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/Henna Flyer 2.png" alt="Bridal Henna Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal1')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Bridal Henna Special</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Bridal Henna Special</h3>
             <p class="text-gray-600 text-sm mb-4">Elegant bridal henna designs for your special day</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Valid till Dec 2025
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal1')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal1')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -541,21 +598,21 @@
         <!-- Flyer 2 - Party Makeup -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
           <div class="flyer-badge">POPULAR</div>
-          <img src="images/flyers/makeup flyer.png" alt="Party Makeup Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/makeup flyer.png" alt="Party Makeup Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal2')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Party Makeup & Styling</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Party Makeup & Styling</h3>
             <p class="text-gray-600 text-sm mb-4">Glamorous makeup for parties and special events</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Valid till Jan 2026
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal2')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal2')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -564,21 +621,21 @@
         
         <!-- Flyer 3 - Face Painting -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
-          <img src="images/flyers/Face Painting.png" alt="Face Painting Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/Face Painting.png" alt="Face Painting Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal3')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Kids Face Painting</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Kids Face Painting</h3>
             <p class="text-gray-600 text-sm mb-4">Fun and colorful face painting for children's events</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Valid till Mar 2026
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal3')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal3')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -588,21 +645,21 @@
         <!-- Flyer 4 - Henna Workshop -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
           <div class="flyer-badge">WORKSHOP</div>
-          <img src="images/flyers/Henna Flyer 1.png" alt="Henna Workshop Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/Henna Flyer 1.png" alt="Henna Workshop Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal4')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Learn Henna Art</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Learn Henna Art</h3>
             <p class="text-gray-600 text-sm mb-4">Join our henna art workshop and learn the basics</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Next session: Jan 2025
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal4')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal4')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -612,21 +669,21 @@
         <!-- Flyer 5 - Festival Special -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
           <div class="flyer-badge">FESTIVAL</div>
-          <img src="images/flyers/All Services.png" alt="Festival Special Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/All Services.png" alt="Festival Special Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal5')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Festival Special Offers</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Festival Special Offers</h3>
             <p class="text-gray-600 text-sm mb-4">Special discounts for festival season celebrations</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Festival Season 2025
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal5')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal5')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -635,21 +692,21 @@
         
         <!-- Flyer 6 - Art & Creative -->
         <div class="flyer-card bg-white rounded-lg shadow-md overflow-hidden relative">
-          <img src="images/flyers/art-creative-flyer.jpg" alt="Art & Creative Flyer" class="w-full h-64 object-cover">
+          <img src="images/flyers/art-creative-flyer.jpg" alt="Art & Creative Flyer" class="w-full h-64 sm:h-72 object-cover">
           <div class="flyer-overlay" onclick="openModal('modal6')">
             <div class="text-center">
               <i class="fas fa-eye text-white text-3xl mb-2"></i>
               <p class="text-white font-semibold">Click to View</p>
             </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-red-800">Art & Creative Works</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-red-800">Art & Creative Works</h3>
             <p class="text-gray-600 text-sm mb-4">Custom art pieces and creative design solutions</p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">
                 <i class="fas fa-calendar mr-1"></i>Year Round
               </span>
-              <button class="bg-red-800 text-white px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal6')">
+              <button class="bg-red-800 text-white px-3 sm:px-4 py-2 rounded text-sm hover:bg-red-900 transition-all" onclick="openModal('modal6')">
                 <i class="fas fa-download mr-1"></i>View & Download
               </button>
             </div>
@@ -658,9 +715,9 @@
       </div>
       
       <!-- Call to Action -->
-      <div class="text-center mt-16 bg-gray-50 p-8 rounded-lg">
-        <h3 class="text-2xl font-bold text-red-800 mb-4">Need Custom Flyers?</h3>
-        <p class="text-gray-600 mb-6 dancing text-xl">Want a personalized flyer for your special event or business?</p>
+      <!-- <div class="text-center mt-12 sm:mt-16 bg-gray-50 p-6 sm:p-8 rounded-lg">
+        <h3 class="text-2xl sm:text-3xl font-bold text-red-800 mb-4">Need Custom Flyers?</h3>
+        <p class="text-gray-600 mb-6 dancing text-lg sm:text-xl">Want a personalized flyer for your special event or business?</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="contact.html" class="book_now_button_home font-semibold">
             <i class="fas fa-envelope mr-2"></i>Contact for Custom Design
@@ -669,7 +726,7 @@
             <i class="fas fa-calendar mr-2"></i>Book Consultation
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -741,7 +798,7 @@
 
   <!-- Footer -->
   <footer class="bg-white-800 text-white py-6 bg-image">
-    <div class="container mx-auto px-4 text-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
       <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
       <div class="mt-4 flex justify-center space-x-6 text-xl">
