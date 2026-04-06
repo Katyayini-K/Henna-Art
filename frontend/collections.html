@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>P_H_S - Our Collection</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poetsen+One&display=swap"
+        rel="stylesheet" />
+
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* ── THEME VARIABLES (same as your site) ── */
+        :root[data-theme="light"] {
+            --bg-color: #f7fafc;
+            --nav-bg: #ffffff;
+            --text-color: #4a5568;
+            --highlight-color: #7f1d1d;
+            --button-bg: #7f1d1d;
+            --button-text: #ffffff;
+            --section-bg: #ffffff;
+            --footer-bg: #ffffff;
+            --card-bg: #ffffff;
+            --card-border: #fee2e2;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #1a202c;
+            --nav-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --highlight-color: #f56565;
+            --button-bg: #f56565;
+            --button-text: #1a202c;
+            --section-bg: #2d3748;
+            --footer-bg: #2d3748;
+            --card-bg: #2d3748;
+            --card-border: #4a5568;
+        }
+
+        body {
+            font-family: 'Poetsen One', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: var(--nav-bg);
+        }
+
+        .dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .nav-links a,
+        .mobile-nav a {
+            color: var(--text-color);
+        }
+
+        .nav-links a:hover,
+        .mobile-nav a:hover {
+            color: var(--highlight-color);
+        }
+
+        .nav-links a.font-semibold,
+        .mobile-nav a.font-semibold {
+            color: var(--highlight-color);
+        }
+
+        .bg-red-800 {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+        }
+
+        .bg-red-800:hover {
+            background-color: var(--highlight-color);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-color);
+        }
+
+        footer a {
+            color: var(--text-color);
+        }
+
+        footer a:hover {
+            color: var(--highlight-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background: var(--highlight-color);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ── HERO ── */
+        .collection-hero {
+            background-color: #7f1d1d;
+            padding: 56px 20px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-ornament {
+            color: #fcd34d;
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            display: block;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .collection-hero h1 {
+            position: relative;
+        }
+
+        .collection-hero p {
+            color: #fecaca;
+            max-width: 600px;
+            margin: 12px auto 0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fcd34d, transparent);
+            margin: 20px auto 0;
+            position: relative;
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--card-border);
+            padding: 14px 16px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: sticky;
+            top: 72px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.3s;
+        }
+
+        .filter-btn {
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1.5px solid #7f1d1d;
+            background: transparent;
+            color: #7f1d1d;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        [data-theme="dark"] .filter-btn {
+            border-color: #f56565;
+            color: #f56565;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #7f1d1d;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .filter-btn:hover,
+        [data-theme="dark"] .filter-btn.active {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        /* ── PRODUCT GRID ── */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        /* ── PRODUCT CARD ── */
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(127, 29, 29, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(127, 29, 29, 0.18);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #7f1d1d;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .product-badge.new-badge {
+            background: #b45309;
+        }
+
+        .product-badge.sale-badge {
+            background: #991b1b;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .wishlist-btn:hover,
+        .wishlist-btn.active {
+            color: #7f1d1d;
+            transform: scale(1.12);
+        }
+
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-color);
+            height: 220px;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .quick-view-btn {
+            position: absolute;
+            bottom: -42px;
+            left: 0;
+            right: 0;
+            background: rgba(127, 29, 29, 0.88);
+            color: #fff;
+            border: none;
+            padding: 11px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: bottom 0.3s ease;
+        }
+
+        .product-card:hover .quick-view-btn {
+            bottom: 0;
+        }
+
+        .product-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-category {
+            font-size: 0.68rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #b45309;
+            margin-bottom: 4px;
+        }
+
+        .product-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #7f1d1d;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        [data-theme="dark"] .product-name {
+            color: #f87171;
+        }
+
+        .product-desc {
+            font-size: 0.78rem;
+            color: var(--text-color);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .price-current {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #7f1d1d;
+            line-height: 1;
+        }
+
+        [data-theme="dark"] .price-current {
+            color: #f87171;
+        }
+
+        .price-original {
+            font-size: 0.72rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+            margin-top: 2px;
+        }
+
+        .add-to-cart-btn {
+            background: #7f1d1d;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #991b1b;
+            transform: scale(1.03);
+        }
+
+        .add-to-cart-btn.added {
+            background: #166534;
+        }
+
+        [data-theme="dark"] .add-to-cart-btn {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        [data-theme="dark"] .add-to-cart-btn:hover {
+            background: #ef4444;
+        }
+
+        /* section divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(127, 29, 29, 0.3));
+        }
+
+        .section-divider::after {
+            background: linear-gradient(90deg, rgba(127, 29, 29, 0.3), transparent);
+        }
+
+        /* ── CART ── */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: min(420px, 100vw);
+            height: 100%;
+            background: var(--section-bg);
+            z-index: 201;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -6px 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: #7f1d1d;
+            color: #fff;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+        }
+
+        .cart-close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .cart-close-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 18px 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-color);
+        }
+
+        .cart-empty i {
+            font-size: 2.5rem;
+            opacity: 0.3;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--card-border);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        .cart-item-img-placeholder {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f1d1d;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .cart-item-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1rem;
+            color: #7f1d1d;
+            margin-bottom: 3px;
+        }
+
+        [data-theme="dark"] .cart-item-name {
+            color: #f87171;
+        }
+
+        .cart-item-price {
+            font-size: 0.82rem;
+            color: var(--text-color);
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .qty-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid #7f1d1d;
+            background: none;
+            color: #7f1d1d;
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: #7f1d1d;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .qty-btn {
+            border-color: #f56565;
+            color: #f56565;
+        }
+
+        [data-theme="dark"] .qty-btn:hover {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        .qty-display {
+            font-size: 0.85rem;
+            min-width: 18px;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 0.78rem;
+            margin-left: auto;
+            padding: 3px;
+            transition: color 0.2s;
+        }
+
+        .remove-btn:hover {
+            color: #dc2626;
+        }
+
+        .cart-footer {
+            padding: 18px 22px;
+            border-top: 2px solid var(--card-border);
+            background: var(--bg-color);
+        }
+
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .cart-subtotal span {
+            font-size: 0.88rem;
+            color: var(--text-color);
+        }
+
+        .cart-subtotal strong {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: #7f1d1d;
+        }
+
+        [data-theme="dark"] .cart-subtotal strong {
+            color: #f87171;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #7f1d1d;
+            color: #fff;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.25s;
+            margin-bottom: 8px;
+        }
+
+        .checkout-btn:hover {
+            background: #991b1b;
+        }
+
+        [data-theme="dark"] .checkout-btn {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        .continue-btn {
+            width: 100%;
+            background: none;
+            color: #7f1d1d;
+            border: 1.5px solid #7f1d1d;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .continue-btn:hover {
+            background: #7f1d1d;
+            color: #fff;
+        }
+
+        [data-theme="dark"] .continue-btn {
+            border-color: #f56565;
+            color: #f56565;
+        }
+
+        [data-theme="dark"] .continue-btn:hover {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        /* ── FLOATING CART ── */
+        .floating-cart {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #7f1d1d;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 6px 24px rgba(127, 29, 29, 0.4);
+            transition: all 0.3s;
+        }
+
+        .floating-cart:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .floating-cart {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        .cart-count-badge {
+            background: #fcd34d;
+            color: #7f1d1d;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0)
+            }
+
+            70% {
+                transform: scale(1.2)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed;
+            bottom: 85px;
+            right: 28px;
+            background: #7f1d1d;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            z-index: 300;
+            transform: translateY(16px);
+            opacity: 0;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: #fcd34d;
+        }
+
+        /* ── QUICK VIEW ── */
+        .qv-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .qv-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .qv-modal {
+            background: var(--section-bg);
+            border-radius: 14px;
+            max-width: 740px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            transform: scale(0.93);
+            transition: transform 0.3s;
+        }
+
+        .qv-overlay.open .qv-modal {
+            transform: scale(1);
+        }
+
+        .qv-img {
+            flex: 1 1 280px;
+            background: var(--bg-color);
+            min-height: 280px;
+            position: relative;
+        }
+
+        .qv-img img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+            border-radius: 14px 0 0 14px;
+        }
+
+        .qv-details {
+            flex: 1 1 280px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .qv-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            color: #7f1d1d;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .qv-category {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b45309;
+            margin-bottom: 6px;
+        }
+
+        .qv-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #7f1d1d;
+            margin-bottom: 8px;
+        }
+
+        [data-theme="dark"] .qv-name {
+            color: #f87171;
+        }
+
+        .qv-price {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #7f1d1d;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        [data-theme="dark"] .qv-price {
+            color: #f87171;
+        }
+
+        .qv-desc {
+            font-size: 0.87rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .qv-add-btn {
+            background: #7f1d1d;
+            color: #fff;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-family: 'Poetsen One', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .qv-add-btn:hover {
+            background: #991b1b;
+        }
+
+        [data-theme="dark"] .qv-add-btn {
+            background: #f56565;
+            color: #1a202c;
+        }
+
+        @media (max-width: 600px) {
+            .floating-cart {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 16px;
+                font-size: 0.78rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+                gap: 14px;
+            }
+
+            .product-img-wrap {
+                height: 170px;
+            }
+
+            .qv-img img {
+                border-radius: 14px 14px 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- ── NAVIGATION ── -->
+    <nav class="bg-white shadow-md sticky top-0 z-20">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="images/logo4.png" alt="Priya's Henna Art of Celebration Logo" class="h-12 logo-img">
+            </a>
+            <div class="flex items-center space-x-4">
+                <nav class="nav-links hidden md:block">
+                    <ul class="flex space-x-4 items-center">
+                        <li><a href="index.html" class="text-gray-700 hover:text-red-800">Home</a></li>
+                        <li><a href="about.html" class="text-gray-700 hover:text-red-800">About</a></li>
+                        <li><a href="services.html" class="text-gray-700 hover:text-red-800">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-700 hover:text-red-800">Gallery</a></li>
+                        <li><a href="collection.html"
+                                class="text-red-800 font-semibold hover:text-red-800">Collection</a></li>
+                        <li><a href="contact.html" class="text-gray-700 hover:text-red-800">Contact</a></li>
+                        <li>
+                            <a href="booking.html"
+                                class="bg-red-800 text-white px-5 py-2 rounded-lg transition-all tracking-wide">Book Now
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            </div>
+            <div class="hamburger md:hidden">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <nav class="mobile-nav md:hidden px-4 pb-4 space-y-2">
+            <ul>
+                <li><a href="index.html" class="block text-gray-700 hover:text-red-800">Home</a></li>
+                <li><a href="about.html" class="block text-gray-700 hover:text-red-800">About</a></li>
+                <li><a href="services.html" class="block text-gray-700 hover:text-red-800">Services</a></li>
+                <li><a href="gallery.html" class="block text-gray-700 hover:text-red-800">Gallery</a></li>
+                <li><a href="collection.html" class="block text-red-800 font-semibold">Collection</a></li>
+                <li><a href="contact.html" class="block text-gray-700 hover:text-red-800">Contact</a></li>
+                <li><a href="booking.html"
+                        class="block bg-red-800 text-white text-center px-4 py-2 rounded hover:bg-red-900">Book Now</a>
+                </li>
+                <li>
+                    <button class="theme-toggle block text-gray-700 hover:text-red-800" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i> Toggle Theme
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="collection-hero">
+        <span class="hero-ornament">✦ ✦ ✦</span>
+        <h1 class="text-4xl font-bold dancing text-white">Our Jewellery Collection</h1>
+        <p>Handcrafted elegance for every occasion — explore our exclusive range of traditional and contemporary
+            jewellery.</p>
+        <div class="hero-divider"></div>
+    </section>
+
+    <!-- ── FILTER BAR ── -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="necklace">Necklaces</button>
+        <button class="filter-btn" data-filter="bangles">Bangles</button>
+        <button class="filter-btn" data-filter="earrings">Earrings</button>
+        <button class="filter-btn" data-filter="rings">Rings</button>
+        <button class="filter-btn" data-filter="sets">Bridal Sets</button>
+    </div>
+
+    <!-- ── COLLECTION GRID ── -->
+    <section class="py-12 px-4" style="background-color: var(--bg-color); transition: background-color 0.3s;">
+        <div class="container mx-auto">
+
+            <div class="section-divider">
+                <span class="dancing text-2xl" style="color: #7f1d1d; white-space: nowrap;">Handcrafted with Love</span>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+
+                <!-- CARD 1 -->
+                <div class="product-card" data-category="necklace">
+                    <span class="product-badge new-badge">New</span>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/necklace1.jpg" alt="Gold Kundan Necklace"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Necklace'">
+                        <button class="quick-view-btn" onclick="openQuickView(0)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Necklace</p>
+                        <h3 class="product-name">Gold Kundan Necklace</h3>
+                        <p class="product-desc">Exquisite kundan-set necklace with 22kt gold polish, perfect for wedding
+                            and festive occasions.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹3,499</div>
+                                <div class="price-original">₹4,200</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Gold Kundan Necklace',3499,'images/jewellery/necklace1.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="product-card" data-category="bangles">
+                    <span class="product-badge sale-badge">Sale</span>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/bangles1.jpg" alt="Bridal Bangle Set"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Bangles'">
+                        <button class="quick-view-btn" onclick="openQuickView(1)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Bangles</p>
+                        <h3 class="product-name">Bridal Bangle Set</h3>
+                        <p class="product-desc">Set of 12 traditional gold-toned bangles with intricate floral carvings
+                            and stone work.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹1,899</div>
+                                <div class="price-original">₹2,500</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Bridal Bangle Set',1899,'images/jewellery/bangles1.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="product-card" data-category="earrings">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/earrings1.jpg" alt="Jhumka Earrings"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Earrings'">
+                        <button class="quick-view-btn" onclick="openQuickView(2)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Earrings</p>
+                        <h3 class="product-name">Jhumka Earrings</h3>
+                        <p class="product-desc">Classic bell-shaped jhumkas with pearl drops and antique gold finish —
+                            timeless elegance.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹899</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Jhumka Earrings',899,'images/jewellery/earrings1.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="product-card" data-category="rings">
+                    <span class="product-badge new-badge">New</span>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/ring1.jpg" alt="Stone Cocktail Ring"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Ring'">
+                        <button class="quick-view-btn" onclick="openQuickView(3)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Rings</p>
+                        <h3 class="product-name">Stone Cocktail Ring</h3>
+                        <p class="product-desc">Bold cocktail ring with a ruby-red centre stone and gold-plated band for
+                            a regal look.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹749</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Stone Cocktail Ring',749,'images/jewellery/ring1.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="product-card" data-category="sets">
+                    <span class="product-badge">Bridal</span>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/bridalset1.jpg" alt="Full Bridal Jewellery Set"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Bridal+Set'">
+                        <button class="quick-view-btn" onclick="openQuickView(4)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Bridal Sets</p>
+                        <h3 class="product-name">Full Bridal Jewellery Set</h3>
+                        <p class="product-desc">Complete 5-piece bridal set — necklace, earrings, maang tikka, bangles &
+                            nose ring.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹8,999</div>
+                                <div class="price-original">₹11,000</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Full Bridal Jewellery Set',8999,'images/jewellery/bridalset1.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="product-card" data-category="necklace">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Wishlist"><i
+                            class="far fa-heart"></i></button>
+                    <div class="product-img-wrap">
+                        <img src="images/jewellery/necklace2.jpg" alt="Layered Mangalsutra"
+                            onerror="this.src='https://placehold.co/400x300/fff1f2/7f1d1d?text=Mangalsutra'">
+                        <button class="quick-view-btn" onclick="openQuickView(5)"><i class="fas fa-eye mr-1"></i> Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Necklace</p>
+                        <h3 class="product-name">Layered Mangalsutra</h3>
+                        <p class="product-desc">Modern 3-layer mangalsutra with black beads and gold pendant — tradition
+                            meets style.</p>
+                        <div class="product-footer">
+                            <div>
+                                <div class="price-current">₹2,199</div>
+                            </div>
+                            <button class="add-to-cart-btn"
+                                onclick="addToCart(this,'Layered Mangalsutra',2199,'images/jewellery/necklace2.jpg')">
+                                <i class="fas fa-shopping-bag"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /products-grid -->
+        </div>
+    </section>
+
+    <!-- ── FLOATING CART ── -->
+    <button class="floating-cart" id="floatingCart" onclick="openCart()" style="display:none">
+        <i class="fas fa-shopping-bag"></i>
+        <span>My Cart</span>
+        <span class="cart-count-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- ── TOAST ── -->
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMsg"></span></div>
+
+    <!-- ── CART SIDEBAR ── -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-bag mr-2"></i>My Cart</h2>
+            <button class="cart-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty.<br>Add some beautiful jewellery!</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card mr-2"></i> Proceed to Checkout
+            </button>
+            <button class="continue-btn" onclick="closeCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- ── QUICK VIEW MODAL ── -->
+    <div class="qv-overlay" id="qvOverlay" onclick="handleQvClick(event)">
+        <div class="qv-modal" id="qvModal">
+            <div class="qv-img" id="qvImg">
+                <button class="qv-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="qv-details" id="qvDetails"></div>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer class="bg-white-800 text-white py-6 bg-image">
+        <div class="container mx-auto px-4 text-center">
+            <p><i class="fas fa-map-marker-alt mr-2"></i>Im Reinacherhof 197A, 4153 Reinach BL</p>
+            <p class="mt-2"><i class="fas fa-phone-alt mr-2"></i>+41 78 317 30 17</p>
+            <div class="mt-4 flex justify-center space-x-6 text-xl">
+                <a href="https://www.facebook.com/share/1FJ3ptXfy4/" class="rounded-md social-icon"
+                    aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/priyas_henna_styling?igsh=MmFwdXZzaXZkM2xs"
+                    class="rounded-md social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=41783173017&text=Hello%2C+I+would+like+to+know+more+about+your+services"
+                    class="text-gray-400 hover:text-white rounded-md social-icon" aria-label="WhatsApp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="contact.html" class="rounded-md social-icon" aria-label="Contact">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="mt-4 text-sm">© 2025 HennArtistry. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ── PRODUCT DATA ──
+        const products = [
+            { name: 'Gold Kundan Necklace', price: 3499, originalPrice: 4200, category: 'Necklace', desc: 'Exquisite kundan-set necklace with 22kt gold polish, perfect for wedding and festive occasions. Features hand-set stones and intricate filigree detailing.', img: 'images/jewellery/necklace1.jpg' },
+            { name: 'Bridal Bangle Set', price: 1899, originalPrice: 2500, category: 'Bangles', desc: 'Set of 12 traditional gold-toned bangles with intricate floral carvings and stone work. Perfect for brides and festive celebrations.', img: 'images/jewellery/bangles1.jpg' },
+            { name: 'Jhumka Earrings', price: 899, originalPrice: null, category: 'Earrings', desc: 'Classic bell-shaped jhumkas with pearl drops and antique gold finish. Timeless elegance that complements every ethnic outfit.', img: 'images/jewellery/earrings1.jpg' },
+            { name: 'Stone Cocktail Ring', price: 749, originalPrice: null, category: 'Rings', desc: 'Bold cocktail ring with a ruby-red centre stone and gold-plated band. Makes a statement at any party or celebration.', img: 'images/jewellery/ring1.jpg' },
+            { name: 'Full Bridal Jewellery Set', price: 8999, originalPrice: 11000, category: 'Bridal Sets', desc: 'Complete 5-piece bridal set — necklace, earrings, maang tikka, bangles & nose ring. Crafted for the most special day of your life.', img: 'images/jewellery/bridalset1.jpg' },
+            { name: 'Layered Mangalsutra', price: 2199, originalPrice: null, category: 'Necklace', desc: 'Modern 3-layer mangalsutra with black beads and gold pendant. Traditional significance with a contemporary silhouette.', img: 'images/jewellery/necklace2.jpg' },
+        ];
+
+        // ── CART ──
+        let cart = [];
+
+        function addToCart(btn, name, price, img) {
+            const existing = cart.find(i => i.name === name);
+            if (existing) existing.qty++;
+            else cart.push({ name, price, img, qty: 1 });
+            btn.classList.add('added');
+            btn.innerHTML = '<i class="fas fa-check"></i> Added!';
+            setTimeout(() => { btn.classList.remove('added'); btn.innerHTML = '<i class="fas fa-shopping-bag"></i> Add'; }, 1800);
+            updateCartUI();
+            showToast(name + ' added to cart!');
+        }
+
+        function updateCartUI() {
+            const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            const count = cart.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('cartBadge').textContent = count;
+            document.getElementById('cartTotal').textContent = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('floatingCart').style.display = count > 0 ? 'flex' : 'none';
+            document.getElementById('cartFooter').style.display = cart.length > 0 ? 'block' : 'none';
+            document.getElementById('cartEmpty').style.display = cart.length === 0 ? 'block' : 'none';
+            renderCartItems();
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cartItems');
+            container.querySelectorAll('.cart-item').forEach(el => el.remove());
+            cart.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+          <div class="cart-item-img-placeholder"><i class="fas fa-gem"></i></div>
+          <div style="flex:1;min-width:0">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" onclick="changeQty(${idx},-1)"><i class="fas fa-minus" style="font-size:0.55rem"></i></button>
+              <span class="qty-display">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${idx},1)"><i class="fas fa-plus" style="font-size:0.55rem"></i></button>
+              <button class="remove-btn" onclick="removeItem(${idx})"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>`;
+                container.appendChild(div);
+            });
+        }
+
+        function changeQty(idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateCartUI();
+        }
+        function removeItem(idx) { cart.splice(idx, 1); updateCartUI(); }
+        function openCart() { document.getElementById('cartSidebar').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
+        function closeCart() { document.getElementById('cartSidebar').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); }
+
+        function checkout() {
+            if (!cart.length) return;
+            alert('Thank you for your order! We will contact you shortly to confirm.');
+            cart = []; updateCartUI(); closeCart();
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2800);
+        }
+
+        function toggleWishlist(btn) {
+            btn.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fas');
+        }
+
+        // ── FILTER ──
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'flex' : 'none';
+                });
+            });
+        });
+
+        // ── QUICK VIEW ──
+        function openQuickView(idx) {
+            const p = products[idx];
+            document.getElementById('qvImg').innerHTML = `
+        <button class="qv-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
+        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/400x400/fff1f2/7f1d1d?text=${encodeURIComponent(p.name)}'">`;
+            document.getElementById('qvDetails').innerHTML = `
+        <p class="qv-category">${p.category}</p>
+        <h2 class="qv-name">${p.name}</h2>
+        <div class="qv-price">₹${p.price.toLocaleString('en-IN')}${p.originalPrice ? `<span style="font-size:1rem;color:#9ca3af;text-decoration:line-through;margin-left:10px">₹${p.originalPrice.toLocaleString('en-IN')}</span>` : ''}</div>
+        <p class="qv-desc">${p.desc}</p>
+        <button class="qv-add-btn" onclick="addToCart(this,'${p.name}',${p.price},'${p.img}');closeQuickView()">
+          <i class="fas fa-shopping-bag"></i> Add to Cart
+        </button>`;
+            document.getElementById('qvOverlay').classList.add('open');
+        }
+        function closeQuickView() { document.getElementById('qvOverlay').classList.remove('open'); }
+        function handleQvClick(e) { if (e.target === document.getElementById('qvOverlay')) closeQuickView(); }
+
+        // ── HAMBURGER ──
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.mobile-nav').classList.toggle('active');
+        });
+
+        // ── THEME TOGGLE (exact from your site) ──
+        const themeToggles = document.querySelectorAll('.theme-toggle');
+        const html = document.documentElement;
+        const logoImg = document.getElementById('logoImg');
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateToggleIcon(savedTheme);
+
+        themeToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleIcon(newTheme);
+            });
+        });
+
+        function updateToggleIcon(theme) {
+            themeToggles.forEach(toggle => {
+                const icon = toggle.querySelector('i');
+                icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            });
+            if (logoImg) logoImg.src = theme === 'light' ? 'images/logo4.png' : 'images/Priya_dark_logo.png';
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
