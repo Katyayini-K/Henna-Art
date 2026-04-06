@@ -15,4 +15,4 @@ yarn-error.log*
 # Vercel local config
 .vercel
 
-collection.html
+collections.html
